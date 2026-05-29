@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,560;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   Transparent Towns — Paonia. Shares the truth-feed editorial
+   system: newsprint, civic-blue, brick-red. Fraunces + Newsreader.
+   ============================================================ */
+:root {
+  --paper:       #f6f3ec;
+  --paper-deep:  #ece4d4;
+  --paper-card:  #fffdf8;
+  --ink:         #1a1916;
+  --ink-soft:    #44403a;
+  --muted:       #6f6757;
+  --civic:       #1f3a4d;
+  --civic-deep:  #142735;
+  --accent:      #b1432a;
+  --accent-deep: #8f3320;
+  --rule:        #ddd5c4;
+
+  --serif-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --serif-body:    "Newsreader", Georgia, "Times New Roman", serif;
+
+  --maxw: 1180px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif-body);
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.68;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: #1f3a4d22; }
+a { color: var(--civic); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+*:focus-visible { outline: 2px solid var(--civic); outline-offset: 2px; }
+img { max-width: 100%; display: block; }
+
+.font-display { font-family: var(--serif-display); }
+
+.eyebrow {
+  font-family: var(--serif-display);
+  font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent); margin: 0;
+}
+.byline { font-family: var(--serif-display); font-size: 0.9rem; color: var(--muted); letter-spacing: 0.02em; margin: 0; }
+
+.shell { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.shell-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.rule { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+.ed-list { margin: 0; padding: 0; list-style: none; }
+.ed-list li { position: relative; padding-left: 1rem; margin: 0 0 0.7rem; line-height: 1.5; }
+.ed-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.6em;
+  width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg);
+}
+
+/* ---------- Reading column ---------- */
+.prose { font-size: 18px; line-height: 1.72; }
+.prose h2 { font-family: var(--serif-display); font-weight: 560; font-size: 1.42rem; line-height: 1.2; margin: 2.2rem 0 0.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+.prose h3 { font-family: var(--serif-display); font-weight: 600; font-size: 1.18rem; margin: 1.5rem 0 0.3rem; }
+.prose p { margin: 0.85rem 0; }
+.prose strong { font-weight: 600; }
+.prose blockquote { border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 1rem; margin: 1.1rem 0; color: var(--ink-soft); font-style: italic; }
+.prose a { color: var(--civic); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Masthead ---------- */
+.mast { background: var(--paper); border-bottom: 2px solid var(--ink); }
+.mast-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+.mast-mark { font-family: var(--serif-display); font-weight: 600; font-size: 1.4rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); display: inline-flex; align-items: baseline; gap: 0.5rem; }
+.mast-mark:hover { text-decoration: none; }
+.mast-mark .gem { color: var(--accent); }
+.mast-tag { font-family: var(--serif-display); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.mast-nav { display: flex; gap: 1.3rem; }
+.mast-nav a { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--civic); white-space: nowrap; }
+
+/* ---------- CTA ---------- */
+.cta { display: inline-block; font-family: var(--serif-display); font-weight: 600; letter-spacing: 0.03em; background: var(--accent); color: #fff; padding: 0.7rem 1.3rem; }
+.cta:hover { background: var(--accent-deep); text-decoration: none; }
+
+/* ---------- Footer ---------- */
+.site-foot { margin-top: 4rem; background: var(--civic-deep); color: #c6c0b1; }
+.site-foot-inner { padding: 3rem 0 3.5rem; font-size: 0.95rem; line-height: 1.6; }
+.site-foot a { color: #e3b39c; }
+.site-foot .foot-notice { font-family: var(--serif-display); font-size: 1rem; color: #ece7da; padding-bottom: 1.3rem; margin-bottom: 1.3rem; border-bottom: 1px solid #2f4150; }
+.site-foot .dot { color: var(--accent); }
+
+@media (max-width: 860px) {
+  body { font-size: 17px; }
+  .shell, .shell-narrow { padding: 0 20px; }
+  .mast-nav { gap: 0.9rem; }
+}
