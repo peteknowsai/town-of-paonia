@@ -74,6 +74,19 @@ export default function RecallPage() {
           who this government believes it answers to.
         </p>
 
+        <h2>The same letter misled residents about the surveillance cameras.</h2>
+        <p>
+          That official March 2026 letter did something else. It told residents the
+          Town&apos;s cameras were &ldquo;motion activated&rdquo; and not a &ldquo;private
+          property surveillance apparatus.&rdquo; Both claims are false. The cameras
+          record around the clock. Verkada&apos;s own product documentation, the
+          Town&apos;s signed contract, and the Town&apos;s own audit logs, every one of
+          them inside the Town&apos;s own records, prove it. I showed this on the record
+          and asked the Town to take the false claim down. They refused and left it on
+          the town website, while two of those cameras keep filming the public to this
+          day.
+        </p>
+
         <h2>Why a recall, and why now</h2>
         <p>
           A mayor who exposes the name of an employee for asking a question, removes the
