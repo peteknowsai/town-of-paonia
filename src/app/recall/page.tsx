@@ -97,19 +97,6 @@ export default function RecallPage() {
           it is grassroots, and it runs on signatures from our own neighbors.
         </p>
 
-        <h2>What I am asking</h2>
-        <p>
-          To get the recall on the ballot, the petition needs a small committee: three
-          to five registered Paonia voters who live inside town limits and are willing
-          to be named as its official sponsors. That is the ask. Lending your name. You
-          do not have to gather signatures or run anything unless you choose to.
-        </p>
-        <p>
-          If you are reading this because I sent it to you, this is the &ldquo;why&rdquo;
-          behind that ask. If you are in, tell me and I will send the next steps. If you
-          have questions first, ask me anything.
-        </p>
-
         <hr className="rule" />
         <p style={{ fontSize: "0.95rem", color: "var(--muted)" }}>
           Every fact on this page comes from public records: Town budgets and meeting
