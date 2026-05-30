@@ -21,7 +21,13 @@ Every page identifies the site as published by Transparent Towns, independent of
 
 ## Stack
 
-Reuses the paonia-truth-feed stack: Next.js 15 (App Router, React 19), Cloudflare Workers via OpenNext, Tailwind 4, brutalist Courier aesthetic. Not yet stood up. See `CLAUDE.md` and `specs/product-spec.md`.
+Next.js 15 (App Router, React 19), Cloudflare Workers via OpenNext, Tailwind 4, brutalist Courier aesthetic, shared with paonia-truth-feed. See `CLAUDE.md` and `specs/product-spec.md`.
+
+## Deploy
+
+Live at https://townofpaonia.co (Cloudflare Workers). Every push to `main` auto-deploys via GitHub Actions (`.github/workflows/deploy.yml`). Manual deploy: `npm run deploy`. Local dev: `npm run dev`.
+
+Currently live: the home page and `/recall`. The meeting tracker and CORA helper are next.
 
 ## Workspace
 
