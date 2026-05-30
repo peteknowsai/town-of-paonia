@@ -57,11 +57,11 @@ export default function RecallPage() {
           prosecuted Brunner&apos;s removal. The choice voters had just made was undone.
         </p>
 
-        <h2>Sourced criticism was branded &ldquo;libelous,&rdquo; and she pushed to spend public money attacking it.</h2>
+        <h2>She branded my sourced criticism &ldquo;libelous,&rdquo; and pushed to spend public money attacking it.</h2>
         <p>
-          In March 2026, a resident distributed a flyer citing the Town&apos;s own
+          In March 2026, I distributed a flyer citing the Town&apos;s own
           budgets, court records, and published news coverage. Mayor Smith authored an
-          official Town statement branding that criticism &ldquo;erroneous and
+          official Town statement branding my criticism &ldquo;erroneous and
           libelous,&rdquo; without disputing a single source it cited, and pushed to
           spend public money on newspaper ads attacking it. Even the Board would not go
           that far, and refused the ads.
