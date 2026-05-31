@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { ConvexHttpClient } from "convex/browser";
-import { api } from "../../../../convex/_generated/api";
 
 // Receives a confidential expression of interest and persists it to Convex.
-// Confidential by default: stored to Transparent Towns, not shared with the
-// Town unless the candidate later advances to an interview.
+//
+// We call the deployment's HTTP mutation endpoint directly with fetch rather
+// than the Convex client: the client imports a WebSocket dependency (node:https)
+// that the Cloudflare Workers runtime cannot load. Plain fetch works natively.
 const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
 
 export async function POST(req: Request) {
@@ -25,13 +25,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "storage not configured" }, { status: 500 });
   }
 
-  const currentRole = String(body.currentRole ?? "").trim() || undefined;
-  const note = String(body.note ?? "").trim() || undefined;
-  const publishAck = Boolean(body.publishAck);
+  const args = {
+    name,
+    email,
+    currentRole: String(body.currentRole ?? "").trim() || undefined,
+    note: String(body.note ?? "").trim() || undefined,
+    publishAck: Boolean(body.publishAck),
+  };
 
   try {
-    const client = new ConvexHttpClient(convexUrl);
-    await client.mutation(api.interest.submit, { name, email, currentRole, note, publishAck });
+    const res = await fetch(`${convexUrl}/api/mutation`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: "interest:submit", args, format: "json" }),
+    });
+    const data = (await res.json().catch(() => ({}))) as { status?: string };
+    if (!res.ok || data.status !== "success") {
+      return NextResponse.json({ ok: false, error: "could not save, please try again" }, { status: 502 });
+    }
   } catch {
     return NextResponse.json({ ok: false, error: "could not save, please try again" }, { status: 502 });
   }
