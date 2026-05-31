@@ -3,10 +3,11 @@
 // `npm run sync:meetings` to refresh. The daily GitHub Action commits a
 // fresh copy whenever the Town's calendar changes (see the commit date).
 //
-// Real Town Board meetings (regular, work sessions, specials, training), so
-// work sessions and reschedules a date rule would miss are included. CivicClerk
-// stores start times as local wall-clock with a bogus Z; the sync reinterprets
-// them in America/Denver.
+// Every public body the Town posts (Board of Trustees, Planning Commission,
+// Tree Board, ad hoc committees, Zoning Board of Adjustments), so work sessions
+// and reschedules a date rule would miss are included. CivicClerk stores start
+// times as local wall-clock with a bogus Z; the sync reinterprets them in
+// America/Denver.
 
 export type MeetingKind =
   | "regular"
@@ -15,36 +16,73 @@ export type MeetingKind =
   | "training"
   | "other";
 
+export type BodyKey =
+  | "board"
+  | "planning"
+  | "tree"
+  | "adhoc"
+  | "zoning"
+  | "other";
+
 export interface RawMeeting {
   eventId: number;
   start: string;
   title: string;
   kind: MeetingKind;
   body: string;
+  bodyKey: BodyKey;
   eventUrl: string;
 }
 
-const BODY = "Board of Trustees";
 const ev = (id: number) => `https://paoniaco.portal.civicclerk.com/event/${id}/files`;
 
 export const RAW_MEETINGS: RawMeeting[] = [
-  { eventId: 566, start: "2026-04-14T17:00:00-06:00", title: "04/14/2026 Town Board Work Session", kind: "work-session", body: BODY, eventUrl: ev(566) },
-  { eventId: 498, start: "2026-04-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(498) },
-  { eventId: 511, start: "2026-04-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(511) },
-  { eventId: 499, start: "2026-05-12T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(499) },
-  { eventId: 572, start: "2026-05-22T18:00:00-06:00", title: "5/22/2026 Special Board Meeting", kind: "special", body: BODY, eventUrl: ev(572) },
-  { eventId: 512, start: "2026-05-26T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(512) },
-  { eventId: 573, start: "2026-05-29T14:30:00-06:00", title: "5/29/2056 Special Board Meeting", kind: "special", body: BODY, eventUrl: ev(573) },
-  { eventId: 581, start: "2026-06-02T18:30:00-06:00", title: "Board Agenda Work Session", kind: "work-session", body: BODY, eventUrl: ev(581) },
-  { eventId: 500, start: "2026-06-09T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(500) },
-  { eventId: 582, start: "2026-06-16T18:30:00-06:00", title: "Board Agenda Work Session", kind: "work-session", body: BODY, eventUrl: ev(582) },
-  { eventId: 513, start: "2026-06-23T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(513) },
-  { eventId: 501, start: "2026-07-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(501) },
-  { eventId: 514, start: "2026-07-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(514) },
-  { eventId: 502, start: "2026-08-11T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(502) },
-  { eventId: 515, start: "2026-08-25T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(515) },
-  { eventId: 503, start: "2026-09-08T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(503) },
-  { eventId: 516, start: "2026-09-22T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(516) },
-  { eventId: 504, start: "2026-10-13T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(504) },
-  { eventId: 517, start: "2026-10-27T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: BODY, eventUrl: ev(517) },
+  { eventId: 524, start: "2026-04-06T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(524) },
+  { eventId: 561, start: "2026-04-07T17:00:00-06:00", title: "Ad Hoc Short Term Rental Committee Meeting", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(561) },
+  { eventId: 566, start: "2026-04-14T17:00:00-06:00", title: "04/14/2026 Town Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(566) },
+  { eventId: 498, start: "2026-04-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(498) },
+  { eventId: 567, start: "2026-04-21T17:00:00-06:00", title: "One Time Event", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(567) },
+  { eventId: 537, start: "2026-04-21T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(537) },
+  { eventId: 565, start: "2026-04-24T18:00:00-06:00", title: "4/24/2026 Zoning Board of Adjustments", kind: "other", body: "Zoning Board of Adjustments", bodyKey: "zoning", eventUrl: ev(565) },
+  { eventId: 511, start: "2026-04-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(511) },
+  { eventId: 525, start: "2026-05-04T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(525) },
+  { eventId: 568, start: "2026-05-05T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(568) },
+  { eventId: 499, start: "2026-05-12T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(499) },
+  { eventId: 571, start: "2026-05-21T17:00:00-06:00", title: "05/21/2026 Board Training Session", kind: "training", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(571) },
+  { eventId: 572, start: "2026-05-22T18:00:00-06:00", title: "5/22/2026 Special Board Meeting", kind: "special", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(572) },
+  { eventId: 512, start: "2026-05-26T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(512) },
+  { eventId: 573, start: "2026-05-29T14:30:00-06:00", title: "5/29/2056 Special Board Meeting", kind: "special", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(573) },
+  { eventId: 526, start: "2026-06-01T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(526) },
+  { eventId: 574, start: "2026-06-02T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(574) },
+  { eventId: 581, start: "2026-06-02T18:30:00-06:00", title: "Board Agenda Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(581) },
+  { eventId: 500, start: "2026-06-09T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(500) },
+  { eventId: 570, start: "2026-06-15T18:00:00-06:00", title: "Zoning Board of Adjustments & Appeals", kind: "other", body: "Zoning Board of Adjustments", bodyKey: "zoning", eventUrl: ev(570) },
+  { eventId: 539, start: "2026-06-16T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(539) },
+  { eventId: 582, start: "2026-06-16T18:30:00-06:00", title: "Board Agenda Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(582) },
+  { eventId: 513, start: "2026-06-23T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(513) },
+  { eventId: 527, start: "2026-07-06T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(527) },
+  { eventId: 575, start: "2026-07-07T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(575) },
+  { eventId: 501, start: "2026-07-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(501) },
+  { eventId: 540, start: "2026-07-21T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(540) },
+  { eventId: 514, start: "2026-07-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(514) },
+  { eventId: 528, start: "2026-08-03T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(528) },
+  { eventId: 576, start: "2026-08-04T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(576) },
+  { eventId: 502, start: "2026-08-11T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(502) },
+  { eventId: 541, start: "2026-08-18T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(541) },
+  { eventId: 515, start: "2026-08-25T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(515) },
+  { eventId: 577, start: "2026-09-01T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(577) },
+  { eventId: 529, start: "2026-09-07T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(529) },
+  { eventId: 503, start: "2026-09-08T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(503) },
+  { eventId: 542, start: "2026-09-15T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(542) },
+  { eventId: 516, start: "2026-09-22T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(516) },
+  { eventId: 530, start: "2026-10-05T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(530) },
+  { eventId: 578, start: "2026-10-06T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(578) },
+  { eventId: 504, start: "2026-10-13T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(504) },
+  { eventId: 543, start: "2026-10-20T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(543) },
+  { eventId: 517, start: "2026-10-27T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(517) },
+  { eventId: 531, start: "2026-11-02T18:00:00-07:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(531) },
+  { eventId: 579, start: "2026-11-03T17:00:00-07:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(579) },
+  { eventId: 505, start: "2026-11-10T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(505) },
+  { eventId: 544, start: "2026-11-17T17:15:00-07:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(544) },
+  { eventId: 518, start: "2026-11-24T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(518) },
 ];

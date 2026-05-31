@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getMeeting, kindLabel } from "@/lib/meetings";
-import { ATTEND, LINKS, BODY_EXPLAINER, TOWN } from "@/data/town";
+import { ATTEND, LINKS, BODY_INFO, TOWN } from "@/data/town";
 
 export const dynamic = "force-dynamic";
 
@@ -20,33 +20,10 @@ export async function generateMetadata({
   };
 }
 
-// The standard order of a Board of Trustees meeting. These recurring parts are
+// Recurring agenda parts (per body) live in src/data/town.ts. They are
 // explained in plain language so the official agenda is easier to read. The
 // specific items for a given night live in the official agenda, which we link
 // to. We never restate the agenda contents, so nothing is paraphrased.
-const AGENDA_PARTS = [
-  {
-    name: "Call to order and roll call",
-    what: "The Mayor opens the meeting and the clerk notes who is present.",
-  },
-  {
-    name: "Public comment",
-    what: "Time for any resident to speak, usually a few minutes each. You do not need to be on the agenda to talk.",
-  },
-  {
-    name: "Consent agenda",
-    what: "Routine items, like prior minutes and bills, approved together in one vote unless a trustee pulls one out.",
-  },
-  {
-    name: "Action items",
-    what: "The decisions of the night: ordinances, resolutions, contracts, and spending the Board votes on.",
-  },
-  {
-    name: "Reports",
-    what: "Updates from the Mayor, staff, and town departments. Usually no vote.",
-  },
-  { name: "Adjournment", what: "The meeting ends." },
-];
 
 export default async function MeetingPage({
   params,
@@ -64,6 +41,8 @@ export default async function MeetingPage({
     ? "Past meeting"
     : "Upcoming meeting";
   const isWorkSession = meeting.kind === "work-session";
+  const isBoard = meeting.bodyKey === "board";
+  const info = BODY_INFO[meeting.bodyKey] ?? BODY_INFO.other;
 
   return (
     <article className="shell-narrow" style={{ paddingTop: "2rem", paddingBottom: "2.5rem" }}>
@@ -82,7 +61,7 @@ export default async function MeetingPage({
       <hr className="rule" />
 
       <div className="prose">
-        <p>{BODY_EXPLAINER}</p>
+        <p>{info.explainer}</p>
 
         <h2 id="attend">How to attend</h2>
         <dl className="attend">
@@ -114,8 +93,8 @@ export default async function MeetingPage({
           {meeting.isPast
             ? "This meeting has passed. The agenda, minutes, and recording are on the Town portal."
             : isWorkSession
-            ? "At a work session the Board reviews what is coming up. The agenda is on the Town portal."
-            : "The official agenda lists what the Board will take up. It is posted on the Town portal before the meeting."}
+            ? `At a work session the ${meeting.body} reviews what is coming up. The agenda is on the Town portal.`
+            : `The official agenda lists what the ${meeting.body} will take up. It is posted on the Town portal before the meeting.`}
         </p>
         <p>
           <a
@@ -131,11 +110,13 @@ export default async function MeetingPage({
 
         <h3>What is usually on the agenda</h3>
         <p>
-          Board meetings follow the same outline. Here is what each part means, so
-          the official agenda is easier to read.
+          {isBoard
+            ? "Board meetings follow the same outline."
+            : `${meeting.body} meetings follow a standard outline.`}{" "}
+          Here is what each part means, so the official agenda is easier to read.
         </p>
         <ul className="agenda-list">
-          {AGENDA_PARTS.map((p) => (
+          {info.agendaParts.map((p) => (
             <li key={p.name}>
               <strong>{p.name}.</strong> {p.what}
             </li>
@@ -145,16 +126,17 @@ export default async function MeetingPage({
         <h2>Have your say</h2>
         <p>
           You can speak during public comment, in person or on Zoom. You can also
-          reach the Board year round through the{" "}
+          reach {isBoard ? "the Board" : `the ${meeting.body}`} year round through
+          the{" "}
           <a href={LINKS.contact} target="_blank" rel="noopener noreferrer">
             Town Clerk
           </a>
-          , or <Link href="/cora">request public records</Link> tied to anything
-          the Board decides.
+          , or <Link href="/cora">request public records</Link> tied to anything{" "}
+          {isBoard ? "the Board" : "this body"} decides.
         </p>
         <p className="sec-aside">
-          Mayor: {TOWN.mayor}. This is an independent guide; the official record
-          lives on the{" "}
+          {isBoard ? `Mayor: ${TOWN.mayor}. ` : ""}This is an independent guide;
+          the official record lives on the{" "}
           <a href={meeting.eventUrl} target="_blank" rel="noopener noreferrer">
             Town portal
           </a>

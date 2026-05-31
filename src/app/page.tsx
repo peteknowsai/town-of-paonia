@@ -1,4 +1,4 @@
-import { getSchedule } from "@/lib/meetings";
+import { getSchedule, hasOtherBodies, type ViewKey } from "@/lib/meetings";
 import { LINKS } from "@/data/town";
 import { SEARCH_PUBLISHED } from "@/data/position";
 import LiveBanner from "@/components/LiveBanner";
@@ -8,10 +8,19 @@ import MeetingRow from "@/components/MeetingRow";
 // Rendered fresh each request so "happening now" and "next" are always current.
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  const { live, next, upcoming, recent } = getSchedule();
-  const moreUpcoming = upcoming.filter((m) => m.id !== next?.id).slice(0, 4);
-  const recentFew = recent.slice(0, 4);
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ view?: string }>;
+}) {
+  const { view: viewParam } = await searchParams;
+  const view: ViewKey = viewParam === "all" ? "all" : "board";
+  const showOther = hasOtherBodies();
+  const showBody = view === "all";
+
+  const { live, next, upcoming, recent } = getSchedule(view);
+  const moreUpcoming = upcoming.filter((m) => m.id !== next?.id).slice(0, view === "all" ? 8 : 4);
+  const recentFew = recent.slice(0, view === "all" ? 6 : 4);
 
   return (
     <div className="shell-narrow" style={{ paddingTop: "2rem", paddingBottom: "2.5rem" }}>
@@ -21,17 +30,37 @@ export default function HomePage() {
         Upcoming meetings, how to take part, and where to read the agendas and
         notes.
       </p>
+
+      {showOther && (
+        <nav className="viewtabs" aria-label="Filter meetings by body">
+          <a
+            className={`viewtab${view === "board" ? " is-active" : ""}`}
+            href="/"
+            aria-current={view === "board" ? "page" : undefined}
+          >
+            Town Board
+          </a>
+          <a
+            className={`viewtab${view === "all" ? " is-active" : ""}`}
+            href="/?view=all"
+            aria-current={view === "all" ? "page" : undefined}
+          >
+            All public meetings
+          </a>
+        </nav>
+      )}
+
       <hr className="rule" />
 
       {live && <LiveBanner meeting={live} />}
-      {next && <NextMeetingHero meeting={next} />}
+      {next && <NextMeetingHero meeting={next} showBody={showBody} />}
 
       {moreUpcoming.length > 0 && (
         <section className="sec" aria-label="More upcoming meetings">
           <h2 className="sec-h">Upcoming meetings</h2>
           <ul className="mlist">
             {moreUpcoming.map((m) => (
-              <MeetingRow key={m.id} meeting={m} variant="upcoming" />
+              <MeetingRow key={m.id} meeting={m} variant="upcoming" showBody={showBody} />
             ))}
           </ul>
           <p className="sec-aside">
@@ -48,7 +77,7 @@ export default function HomePage() {
           <h2 className="sec-h">Recent meetings</h2>
           <ul className="mlist">
             {recentFew.map((m) => (
-              <MeetingRow key={m.id} meeting={m} variant="recent" />
+              <MeetingRow key={m.id} meeting={m} variant="recent" showBody={showBody} />
             ))}
           </ul>
           <p className="sec-aside">

@@ -3,9 +3,9 @@
 // on the Town's calendar, so work sessions, special meetings, and reschedules
 // all show up, and nothing is invented.
 
-import { RAW_MEETINGS, type RawMeeting, type MeetingKind } from "@/data/meetings";
+import { RAW_MEETINGS, type RawMeeting, type MeetingKind, type BodyKey } from "@/data/meetings";
 
-export type { MeetingKind };
+export type { MeetingKind, BodyKey };
 
 export interface Meeting {
   /** URL slug: the ISO date, or date + event id when a date has two meetings. */
@@ -27,6 +27,8 @@ export interface Meeting {
   title: string;
   kind: MeetingKind;
   body: string;
+  /** Which public body this meeting belongs to, for filtering and tags. */
+  bodyKey: BodyKey;
   /** CivicClerk event page: agenda, packet, minutes, recording. */
   eventUrl: string;
   isPast: boolean;
@@ -89,6 +91,7 @@ function decorate(m: RawMeeting, now: Date): Meeting {
     title: m.title,
     kind: m.kind,
     body: m.body,
+    bodyKey: m.bodyKey,
     eventUrl: m.eventUrl,
     isPast,
     isLive,
@@ -118,12 +121,21 @@ function allDecorated(now: Date): Meeting[] {
   return list;
 }
 
-export function getSchedule(now: Date = new Date()): Schedule {
+export type ViewKey = "board" | "all";
+
+export function getSchedule(view: ViewKey = "board", now: Date = new Date()): Schedule {
   const all = allDecorated(now);
-  const live = all.find((m) => m.isLive) ?? null;
-  const future = all.filter((m) => !m.isPast && !m.isLive);
-  const past = all.filter((m) => m.isPast).reverse();
+  const scoped = view === "all" ? all : all.filter((m) => m.bodyKey === "board");
+  const live = scoped.find((m) => m.isLive) ?? null;
+  const future = scoped.filter((m) => !m.isPast && !m.isLive);
+  const past = scoped.filter((m) => m.isPast).reverse();
   return { live, next: future[0] ?? null, upcoming: future, recent: past };
+}
+
+// Whether the feed currently holds any non-Board body, so the homepage only
+// offers the "all public meetings" switch when there is something to switch to.
+export function hasOtherBodies(): boolean {
+  return RAW_MEETINGS.some((m) => m.bodyKey !== "board");
 }
 
 export function getMeeting(id: string, now: Date = new Date()): Meeting | null {

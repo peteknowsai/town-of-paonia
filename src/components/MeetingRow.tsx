@@ -8,9 +8,12 @@ import { kindLabel, type Meeting } from "@/lib/meetings";
 export default function MeetingRow({
   meeting,
   variant = "upcoming",
+  showBody = false,
 }: {
   meeting: Meeting;
   variant?: "upcoming" | "recent";
+  /** Label the row with its public body. Used in the "all meetings" view. */
+  showBody?: boolean;
 }) {
   const dateBlock = (
     <span className="dateblock" aria-hidden>
@@ -18,6 +21,7 @@ export default function MeetingRow({
       <span className="dy">{meeting.day}</span>
     </span>
   );
+  const org = showBody ? <span className="mb-org">{meeting.body}</span> : null;
 
   if (variant === "recent") {
     return (
@@ -25,6 +29,7 @@ export default function MeetingRow({
         <Link className="mrow-link" href={`/meetings/${meeting.id}`}>
           {dateBlock}
           <span className="mrow-body">
+            {org}
             <span className="mb-name">{meeting.title}</span>
             <span className="mb-status">{meeting.timeLabel}</span>
           </span>
@@ -43,6 +48,7 @@ export default function MeetingRow({
       <Link className="mrow-link" href={`/meetings/${meeting.id}`}>
         {dateBlock}
         <span className="mrow-body">
+          {org}
           <span className="mb-name">{meeting.title}</span>
           <span className="mb-status">
             {meeting.timeLabel} &middot; {kindLabel(meeting.kind)}

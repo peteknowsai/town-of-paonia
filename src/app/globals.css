@@ -530,3 +530,27 @@ img { max-width: 100%; display: block; }
   padding: 0 0.25em;
   border-radius: 2px;
 }
+
+/* ---------- Body filter tabs (Town Board / All public meetings) ---------- */
+.viewtabs {
+  display: inline-flex; flex-wrap: wrap; gap: 0.3rem; margin: 1.1rem 0 0;
+  padding: 0.3rem; background: var(--paper-card); border: 1px solid var(--rule);
+}
+.viewtab {
+  font-family: var(--serif-display); font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.01em; color: var(--ink-soft); padding: 0.55rem 1rem;
+  min-height: 44px; display: inline-flex; align-items: center;
+}
+.viewtab:hover { text-decoration: none; background: var(--paper-deep); }
+.viewtab.is-active, .viewtab.is-active:hover { background: var(--civic); color: #fff; }
+
+/* Body label on a meeting row / hero, shown in the "all public meetings" view */
+.mb-org {
+  font-family: var(--serif-display); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--civic);
+}
+.next-org {
+  font-family: var(--serif-display); font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--civic);
+  margin: 0 0 0.3rem;
+}
