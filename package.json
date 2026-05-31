@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "sync:meetings": "node scripts/sync-meetings.mjs",
     "worker:build": "npx opennextjs-cloudflare build",
     "worker:preview": "npx opennextjs-cloudflare preview",
     "deploy": "npx opennextjs-cloudflare deploy"

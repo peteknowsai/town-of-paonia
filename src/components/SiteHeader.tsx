@@ -9,6 +9,8 @@ export default function SiteHeader() {
           <span className="mast-tag">Paonia, Colo.</span>
         </Link>
         <nav className="mast-nav">
+          <Link href="/">Meetings</Link>
+          <Link href="/cora">Records</Link>
           <Link href="/recall">The Recall</Link>
         </nav>
       </div>

@@ -1,56 +1,81 @@
-import Link from "next/link";
+import { getSchedule } from "@/lib/meetings";
+import { LINKS } from "@/data/town";
+import LiveBanner from "@/components/LiveBanner";
+import NextMeetingHero from "@/components/NextMeetingHero";
+import MeetingRow from "@/components/MeetingRow";
+
+// Rendered fresh each request so "happening now" and "next" are always current.
+export const dynamic = "force-dynamic";
 
 export default function HomePage() {
+  const { live, next, upcoming, recent } = getSchedule();
+  const moreUpcoming = upcoming.filter((m) => m.id !== next?.id).slice(0, 4);
+  const recentFew = recent.slice(0, 4);
+
   return (
-    <div className="shell-narrow" style={{ paddingTop: "2.5rem", paddingBottom: "2rem" }}>
-      <p className="eyebrow" style={{ marginBottom: "1rem" }}>
-        A demonstration by Transparent Towns
+    <div className="shell-narrow" style={{ paddingTop: "2rem", paddingBottom: "2.5rem" }}>
+      <p className="eyebrow">What is happening in Paonia</p>
+      <h1 className="title-h1 font-display">Paonia town meetings</h1>
+      <p className="title-sub">
+        Upcoming meetings, how to take part, and where to read the agendas and
+        notes.
       </p>
-      <h1
-        className="font-display"
-        style={{
-          fontWeight: 560,
-          fontSize: "clamp(2.1rem, 5vw, 3rem)",
-          lineHeight: 1.06,
-          letterSpacing: "-0.02em",
-          margin: "0 0 1.2rem",
-          textWrap: "balance",
-        }}
-      >
-        What a useful Town of Paonia website could be
-      </h1>
+      <hr className="rule" />
 
-      <hr className="rule" style={{ margin: "0 0 2rem" }} />
+      {live && <LiveBanner meeting={live} />}
+      {next && <NextMeetingHero meeting={next} />}
 
-      <div className="prose">
-        <p>
-          This site is a demonstration. It shows, by example, what the Town of
-          Paonia&apos;s web presence could do for the people who actually use it: make
-          meetings easy to find and join, make public records easy to request, and
-          answer the simple question of what your town government is doing right now.
-        </p>
-        <p>
-          It is published by Transparent Towns, and it is not the official town site.
-          For official business, go to{" "}
-          <a href="https://townofpaonia.colorado.gov">townofpaonia.colorado.gov</a>.
-        </p>
+      {moreUpcoming.length > 0 && (
+        <section className="sec" aria-label="More upcoming meetings">
+          <h2 className="sec-h">Upcoming meetings</h2>
+          <ul className="mlist">
+            {moreUpcoming.map((m) => (
+              <MeetingRow key={m.id} meeting={m} variant="upcoming" />
+            ))}
+          </ul>
+          <p className="sec-aside">
+            Full calendar on the{" "}
+            <a href={LINKS.agendaPortal} target="_blank" rel="noopener noreferrer">
+              Town meeting portal &rarr;
+            </a>
+          </p>
+        </section>
+      )}
 
-        <h2>Here now</h2>
-        <ul className="ed-list">
-          <li>
-            <Link href="/recall">The case for recalling Mayor Paige Smith</Link>
-          </li>
-        </ul>
+      {recentFew.length > 0 && (
+        <section className="sec" aria-label="Recent meetings">
+          <h2 className="sec-h">Recent meetings</h2>
+          <ul className="mlist">
+            {recentFew.map((m) => (
+              <MeetingRow key={m.id} meeting={m} variant="recent" />
+            ))}
+          </ul>
+          <p className="sec-aside">
+            Older meetings and recordings on the{" "}
+            <a href={LINKS.agendaPortal} target="_blank" rel="noopener noreferrer">
+              Town meeting portal &rarr;
+            </a>
+          </p>
+        </section>
+      )}
 
-        <h2>Coming</h2>
-        <ul className="ed-list">
-          <li>
-            A live meeting tracker: what is scheduled, and a one-click link to join
-            when a meeting is happening.
-          </li>
-          <li>A guided helper for filing Colorado Open Records Act (CORA) requests.</li>
-        </ul>
-      </div>
+      <section className="sec" aria-label="Common tasks">
+        <h2 className="sec-h">Other things you can do</h2>
+        <div className="actions">
+          <a className="acard" href="/cora">
+            <span className="ac-t">Ask for a record</span>
+            <span className="ac-s">A guided CORA request, with a template.</span>
+          </a>
+          <a className="acard" href={LINKS.officialSite} target="_blank" rel="noopener noreferrer">
+            <span className="ac-t">Town news &amp; alerts</span>
+            <span className="ac-s">On the official Town site.</span>
+          </a>
+          <a className="acard" href={LINKS.contact} target="_blank" rel="noopener noreferrer">
+            <span className="ac-t">Contact the Town</span>
+            <span className="ac-s">Phone, email, office hours.</span>
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

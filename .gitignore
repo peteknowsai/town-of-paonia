@@ -5,3 +5,4 @@ node_modules/
 .open-next/
 .env*
 .wrangler/
+*.tsbuildinfo
