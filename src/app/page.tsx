@@ -63,6 +63,10 @@ export default function HomePage() {
       <section className="sec" aria-label="Common tasks">
         <h2 className="sec-h">Other things you can do</h2>
         <div className="actions">
+          <a className="acard" href="/handbook">
+            <span className="ac-t">Read the employee handbook</span>
+            <span className="ac-s">A free, Colorado-specific model manual, open for comment.</span>
+          </a>
           {SEARCH_PUBLISHED && (
             <a className="acard" href="/administrator">
               <span className="ac-t">Help find the next administrator</span>
