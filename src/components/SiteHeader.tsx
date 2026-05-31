@@ -10,6 +10,7 @@ export default function SiteHeader() {
         </Link>
         <nav className="mast-nav">
           <Link href="/">Meetings</Link>
+          <Link href="/water">Water</Link>
           <Link href="/cora">Records</Link>
           <Link href="/administrator">The Job</Link>
           <Link href="/recall">The Recall</Link>
