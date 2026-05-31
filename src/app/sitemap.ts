@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, changeFrequency: "daily", priority: 1 },
     { url: `${BASE}/grants`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/cora`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/handbook`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/recall`, changeFrequency: "monthly", priority: 0.6 },
   ];
   const meetings: MetadataRoute.Sitemap = meetingParams().map((p) => ({

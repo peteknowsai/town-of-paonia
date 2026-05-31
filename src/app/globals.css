@@ -484,3 +484,49 @@ img { max-width: 100%; display: block; }
 .prose a.btn-outline:hover {
   color: var(--paper-card);
 }
+
+/* ============================================================
+   Handbook page: thesis callout, read/download card, markers.
+   ============================================================ */
+.callout {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.2rem 1.4rem;
+  margin: 1.6rem 0;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+.callout strong { font-weight: 600; }
+
+.doc-card {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--civic);
+  padding: 1.4rem 1.5rem 1.5rem;
+  margin: 1.6rem 0 2.2rem;
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.cta-row .btn { flex: 1 1 12rem; }
+.doc-note { font-size: 0.95rem; color: var(--muted); margin: 1rem 0 0; line-height: 1.55; }
+
+.prose .disclaimer {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  background: var(--paper-deep);
+  border-left: 3px solid var(--muted);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.q-list { margin: 0.6rem 0; padding-left: 1.3rem; }
+.q-list li { margin: 0.5rem 0; padding-left: 0.2rem; }
+
+.confirm {
+  background: #fdeec8;
+  color: #6b4e12;
+  font-size: 0.86em;
+  padding: 0 0.25em;
+  border-radius: 2px;
+}

@@ -13,6 +13,7 @@ export default function SiteHeader() {
           <Link href="/">Meetings</Link>
           <Link href="/water">Water</Link>
           <Link href="/cora">Records</Link>
+          <Link href="/handbook">Handbook</Link>
           <Link href="/grants">Grant Tracker</Link>
           {SEARCH_PUBLISHED && <Link href="/administrator">The Job</Link>}
           <Link href="/recall">The Recall</Link>
