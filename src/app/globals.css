@@ -464,3 +464,23 @@ img { max-width: 100%; display: block; }
   .next { padding: 1.4rem 1.3rem 1.5rem; }
   .live { padding: 1.4rem 1.3rem 1.6rem; }
 }
+
+/* Buttons inside .prose (e.g. the meeting detail page "Open the official
+   agenda" button). The generic `.prose a` rule (specificity 0,1,1) was
+   overriding `.btn-fill`'s light text with the navy link color, rendering the
+   fill button as an invisible navy-on-navy block, and adding a stray
+   underline. These higher-specificity rules restore the button's own colors
+   and drop the underline inside prose. */
+.prose a.btn {
+  text-decoration: none;
+}
+.prose a.btn-fill,
+.prose a.btn-fill:hover {
+  color: var(--paper-card);
+}
+.prose a.btn-outline {
+  color: var(--civic);
+}
+.prose a.btn-outline:hover {
+  color: var(--paper-card);
+}
