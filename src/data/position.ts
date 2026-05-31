@@ -6,6 +6,11 @@
 // Dynamic state (expressions of interest, committee sign-ups, search status)
 // belongs in Convex once it is wired. See specs/admin-search.md.
 
+// Master switch for the public Town Administrator search. While false, the
+// /administrator page returns 404, its API routes reject writes, and no link to
+// it renders anywhere on the site. Flip to true to republish everything at once.
+export const SEARCH_PUBLISHED = false;
+
 export type SearchStatus = "open" | "paused" | "filled";
 
 // Each criterion MUST be a job-relevant professional competency plus the kind of

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { validateCommittee } from "@/lib/forms";
+import { SEARCH_PUBLISHED } from "@/data/position";
 
 // Receives an open, self-nominated committee sign-up and persists it to Convex.
 //
@@ -9,6 +10,8 @@ import { validateCommittee } from "@/lib/forms";
 const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
 
 export async function POST(req: Request) {
+  // Search is unpublished: reject writes until SEARCH_PUBLISHED is true.
+  if (!SEARCH_PUBLISHED) return new NextResponse(null, { status: 404 });
   let body: Record<string, unknown>;
   try {
     body = await req.json();

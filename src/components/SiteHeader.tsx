@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SEARCH_PUBLISHED } from "@/data/position";
 
 export default function SiteHeader() {
   return (
@@ -12,7 +13,7 @@ export default function SiteHeader() {
           <Link href="/">Meetings</Link>
           <Link href="/water">Water</Link>
           <Link href="/cora">Records</Link>
-          <Link href="/administrator">The Job</Link>
+          {SEARCH_PUBLISHED && <Link href="/administrator">The Job</Link>}
           <Link href="/recall">The Recall</Link>
         </nav>
       </div>

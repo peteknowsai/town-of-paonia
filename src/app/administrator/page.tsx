@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { position, isOpen } from "@/data/position";
+import { notFound } from "next/navigation";
+import { position, isOpen, SEARCH_PUBLISHED } from "@/data/position";
 import InterestForm from "@/components/InterestForm";
 import CommitteeForm from "@/components/CommitteeForm";
 
@@ -22,6 +23,8 @@ const tierLabel: Record<string, string> = {
 };
 
 export default function AdministratorPage() {
+  // Unpublished for now: the page is unreachable until SEARCH_PUBLISHED is true.
+  if (!SEARCH_PUBLISHED) notFound();
   const p = position;
   const open = isOpen(p);
 
