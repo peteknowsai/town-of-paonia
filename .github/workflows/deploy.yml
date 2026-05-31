@@ -26,6 +26,7 @@ jobs:
         run: npm run worker:build
         env:
           NEXT_PUBLIC_BASE_URL: https://townofpaonia.co
+          NEXT_PUBLIC_CONVEX_URL: https://academic-elephant-432.convex.cloud
 
       - name: Deploy to Cloudflare Workers
         run: npm run deploy

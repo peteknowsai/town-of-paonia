@@ -62,6 +62,10 @@ export default function HomePage() {
       <section className="sec" aria-label="Common tasks">
         <h2 className="sec-h">Other things you can do</h2>
         <div className="actions">
+          <a className="acard" href="/administrator">
+            <span className="ac-t">Help find the next administrator</span>
+            <span className="ac-s">An open, public search. See the job and raise your hand.</span>
+          </a>
           <a className="acard" href="/cora">
             <span className="ac-t">Ask for a record</span>
             <span className="ac-s">A guided CORA request, with a template.</span>

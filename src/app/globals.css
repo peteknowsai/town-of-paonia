@@ -94,6 +94,87 @@ img { max-width: 100%; display: block; }
 .site-foot .foot-notice { font-family: var(--serif-display); font-size: 1rem; color: #ece7da; padding-bottom: 1.3rem; margin-bottom: 1.3rem; border-bottom: 1px solid #2f4150; }
 .site-foot .dot { color: var(--accent); }
 
+/* ---------- Administrator search ---------- */
+.note {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--civic);
+  padding: 1rem 1.2rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.note p { margin: 0; }
+
+.section-head {
+  font-family: var(--serif-display); font-weight: 560; font-size: 1.42rem;
+  line-height: 1.2; margin: 2.6rem 0 0.5rem; padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+}
+
+.spread { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.2rem 0; }
+.spread-tight { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+.card {
+  background: var(--paper-card); border: 1px solid var(--rule); padding: 1rem 1.1rem;
+}
+.card h3 { font-family: var(--serif-display); font-weight: 600; font-size: 1.02rem; margin: 0 0 0.35rem; }
+.card p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft); }
+.card-quiet { background: transparent; border-style: dashed; }
+
+.ledger { margin: 1.2rem 0; }
+.ledger-row { border-top: 1px solid var(--rule); padding: 0.95rem 0; }
+.ledger-row:last-child { border-bottom: 1px solid var(--rule); }
+.ledger-phase {
+  font-family: var(--serif-display); font-weight: 600; font-size: 1.04rem;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; margin-bottom: 0.4rem;
+}
+.ledger-firm, .ledger-we { font-size: 0.95rem; line-height: 1.5; margin: 0.2rem 0; }
+.ledger-k {
+  display: inline-block; min-width: 5.6em; font-family: var(--serif-display);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-right: 0.5rem;
+}
+.ledger-we { color: var(--ink); }
+.ledger-firm { color: var(--muted); }
+.tag {
+  font-family: var(--serif-display); font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 0.15rem 0.5rem; white-space: nowrap; border: 1px solid;
+}
+.tag-replaces { color: var(--accent-deep); border-color: var(--accent); }
+.tag-scaffolds { color: var(--civic); border-color: var(--civic); }
+.tag-declined { color: var(--muted); border-color: var(--rule); }
+
+.cost-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.4rem 0; }
+.cost-strip > div { border-top: 2px solid var(--ink); padding-top: 0.6rem; }
+.cost-strip strong { font-family: var(--serif-display); font-size: 1.3rem; display: block; }
+.cost-strip span { font-weight: 600; font-size: 0.9rem; display: block; margin: 0.1rem 0 0.2rem; }
+.cost-strip em { font-size: 0.85rem; color: var(--muted); font-style: normal; line-height: 1.4; display: block; }
+
+.channels { margin: 1.2rem 0; }
+.channel-group h4 {
+  font-family: var(--serif-display); font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin: 1.2rem 0 0.5rem;
+}
+.channel-group ul { margin: 0 0 0.5rem; padding: 0; list-style: none; }
+.channel-group li { font-size: 0.95rem; line-height: 1.5; margin: 0 0 0.4rem; padding-left: 1rem; position: relative; }
+.channel-group li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; background: var(--civic); transform: rotate(45deg); }
+.channel-group li em { color: var(--muted); font-style: italic; }
+
+.funnel { margin: 1.6rem 0; }
+.ts-form { display: flex; flex-direction: column; gap: 0.9rem; max-width: 32rem; margin-top: 1rem; }
+.ts-form label { display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--serif-display); font-size: 0.92rem; font-weight: 600; color: var(--ink-soft); }
+.ts-form .opt { font-weight: 400; color: var(--muted); }
+.ts-form input, .ts-form textarea {
+  font-family: var(--serif-body); font-size: 1rem; padding: 0.55rem 0.7rem;
+  border: 1px solid var(--rule); background: var(--paper-card); color: var(--ink);
+}
+.ts-form input:focus, .ts-form textarea:focus { outline: 2px solid var(--civic); outline-offset: 1px; }
+.ts-form .check { flex-direction: row; align-items: flex-start; gap: 0.5rem; font-weight: 400; font-size: 0.9rem; line-height: 1.45; }
+.ts-form .check input { margin-top: 0.2rem; }
+.ts-form button { align-self: flex-start; border: none; cursor: pointer; }
+.ts-form button:disabled { opacity: 0.6; cursor: default; }
+.form-done { background: var(--paper-card); border-left: 4px solid var(--accent); padding: 1rem 1.2rem; font-size: 0.98rem; line-height: 1.55; margin-top: 1rem; }
+.form-err { color: var(--accent-deep); font-size: 0.9rem; }
+
 /* ============================================================
    Citizen dashboard: title, meeting hero, live card, lists.
    One reserved accent (brick red) = "act now". Big tap targets.
@@ -189,6 +270,7 @@ img { max-width: 100%; display: block; }
   body { font-size: 17px; }
   .shell, .shell-narrow { padding: 0 20px; }
   .mast-nav { gap: 0.9rem; }
+  .spread, .spread-tight, .cost-strip { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .next { padding: 1.4rem 1.3rem 1.5rem; }
