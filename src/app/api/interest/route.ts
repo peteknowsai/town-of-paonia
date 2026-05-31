@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
+import { validateInterest } from "@/lib/forms";
 
 // Receives a confidential expression of interest and persists it to Convex.
 //
-// We call the deployment's HTTP mutation endpoint directly with fetch rather
-// than the Convex client: the client imports a WebSocket dependency (node:https)
-// that the Cloudflare Workers runtime cannot load. Plain fetch works natively.
+// Calls the deployment's HTTP mutation endpoint directly with fetch rather than
+// the Convex client, which pulls in a WebSocket (node:https) dependency the
+// Cloudflare Workers runtime cannot load. Plain fetch works natively.
 const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
 
 export async function POST(req: Request) {
@@ -15,35 +16,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "bad request" }, { status: 400 });
   }
 
-  // Honeypot: a hidden field real users never fill. Silently accept without
-  // storing so bots don't learn they were caught.
-  if (String(body.website ?? "").trim() !== "") {
-    return NextResponse.json({ ok: true });
-  }
-
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return NextResponse.json({ ok: false, error: "name and a valid email are required" }, { status: 422 });
+  const v = validateInterest(body);
+  if (v.kind === "drop") return NextResponse.json({ ok: true });
+  if (v.kind === "invalid") {
+    return NextResponse.json({ ok: false, error: v.error }, { status: v.status });
   }
 
   if (!convexUrl) {
     return NextResponse.json({ ok: false, error: "storage not configured" }, { status: 500 });
   }
 
-  const args = {
-    name,
-    email,
-    currentRole: String(body.currentRole ?? "").trim() || undefined,
-    note: String(body.note ?? "").trim() || undefined,
-    publishAck: Boolean(body.publishAck),
-  };
-
   try {
     const res = await fetch(`${convexUrl}/api/mutation`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ path: "interest:submit", args, format: "json" }),
+      body: JSON.stringify({ path: "interest:submit", args: v.args, format: "json" }),
     });
     const data = (await res.json().catch(() => ({}))) as { status?: string };
     if (!res.ok || data.status !== "success") {

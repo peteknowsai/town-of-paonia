@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { validateCommittee } from "@/lib/forms";
 
 // Receives an open, self-nominated committee sign-up and persists it to Convex.
 //
@@ -15,34 +16,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "bad request" }, { status: 400 });
   }
 
-  // Honeypot: a hidden field real users never fill. Silently accept without
-  // storing so bots don't learn they were caught.
-  if (String(body.website ?? "").trim() !== "") {
-    return NextResponse.json({ ok: true });
-  }
-
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    return NextResponse.json({ ok: false, error: "name and a valid email are required" }, { status: 422 });
+  const v = validateCommittee(body);
+  if (v.kind === "drop") return NextResponse.json({ ok: true });
+  if (v.kind === "invalid") {
+    return NextResponse.json({ ok: false, error: v.error }, { status: v.status });
   }
 
   if (!convexUrl) {
     return NextResponse.json({ ok: false, error: "storage not configured" }, { status: 500 });
   }
 
-  const args = {
-    name,
-    email,
-    connection: String(body.connection ?? "").trim() || undefined,
-    why: String(body.why ?? "").trim() || undefined,
-  };
-
   try {
     const res = await fetch(`${convexUrl}/api/mutation`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ path: "committee:submit", args, format: "json" }),
+      body: JSON.stringify({ path: "committee:submit", args: v.args, format: "json" }),
     });
     const data = (await res.json().catch(() => ({}))) as { status?: string };
     if (!res.ok || data.status !== "success") {

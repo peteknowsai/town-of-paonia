@@ -10,7 +10,8 @@
     "sync:meetings": "node scripts/sync-meetings.mjs",
     "worker:build": "npx opennextjs-cloudflare build",
     "worker:preview": "npx opennextjs-cloudflare preview",
-    "deploy": "npx opennextjs-cloudflare deploy"
+    "deploy": "npx opennextjs-cloudflare deploy",
+    "test": "vitest run"
   },
   "dependencies": {
     "convex": "^1.39.1",
@@ -25,6 +26,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^4.1.7"
   }
 }
