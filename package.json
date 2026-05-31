@@ -1,15 +1,16 @@
 {
   "name": "town-of-paonia",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "worker:build": "opennextjs-cloudflare build",
-    "worker:preview": "opennextjs-cloudflare preview",
-    "deploy": "wrangler deploy",
-    "preview": "wrangler dev",
-    "sync:meetings": "node scripts/sync-meetings.mjs"
+    "sync:meetings": "node scripts/sync-meetings.mjs",
+    "worker:build": "npx opennextjs-cloudflare build",
+    "worker:preview": "npx opennextjs-cloudflare preview",
+    "deploy": "npx opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "next": "15.4.6",
@@ -17,15 +18,12 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250906.0",
-    "@opennextjs/cloudflare": "^1.6.5",
-    "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@opennextjs/cloudflare": "1.11.0",
     "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "tailwindcss": "^4",
-    "eslint": "^8",
-    "eslint-config-next": "^15",
-    "typescript": "^5"
+    "typescript": "5.9.3"
   }
 }
