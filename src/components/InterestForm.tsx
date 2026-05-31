@@ -36,6 +36,11 @@ export default function InterestForm() {
 
   return (
     <form className="ts-form" onSubmit={onSubmit}>
+      {/* Honeypot: hidden from people, tempting to bots. If filled, we drop it. */}
+      <label className="hp" aria-hidden="true">
+        Leave this field empty
+        <input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <label>
         Your name
         <input name="name" required autoComplete="name" />

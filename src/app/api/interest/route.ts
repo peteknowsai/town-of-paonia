@@ -15,6 +15,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "bad request" }, { status: 400 });
   }
 
+  // Honeypot: a hidden field real users never fill. Silently accept without
+  // storing so bots don't learn they were caught.
+  if (String(body.website ?? "").trim() !== "") {
+    return NextResponse.json({ ok: true });
+  }
+
   const name = String(body.name ?? "").trim();
   const email = String(body.email ?? "").trim();
   if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {

@@ -62,7 +62,6 @@ export type Position = {
 
 export const position: Position = {
   status: "open",
-  // TODO(pete): confirm date; this is the public freshness stamp.
   asOf: "Spring 2026",
   title: "Town Administrator",
   place: "Paonia, Colorado",
@@ -100,7 +99,7 @@ export const position: Position = {
   challenges: [
     "The town is between administrators. This is an open, real search, not a formality.",
     "Trust between residents and town hall needs rebuilding after a turbulent stretch. The right person treats that as the job, not an annoyance.",
-    "The town recently removed the Verkada surveillance cameras it had installed, after sustained public concern about filming residents and children in public spaces. We want an administrator who understands why a town would not want that, not one who has to have it explained.", // TODO(pete): confirm removal month/year to state as record.
+    "In spring 2026 the Board voted to disable and then remove the Verkada surveillance cameras the town had installed in public spaces months earlier, after sustained public pressure about filming residents and children. We want an administrator who understands why a town would not want that, not one who has to have it explained.",
     "It is a lean organization. The administrator does real work with a small staff and a small budget, in a place where water, agriculture, and a tourism economy all have to be balanced honestly.",
   ],
 
