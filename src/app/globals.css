@@ -25,7 +25,11 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+/* overflow-x: clip stops any single wide element (a long nav, a wide table)
+   from giving the whole page a horizontal scrollbar, which on narrow screens
+   reads as "the text is cut off at the edge." clip (not hidden) keeps
+   position: sticky working. */
+html, body { margin: 0; padding: 0; overflow-x: clip; }
 
 body {
   font-family: var(--serif-body);
@@ -75,12 +79,12 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Masthead ---------- */
 .mast { background: var(--paper); border-bottom: 2px solid var(--ink); }
-.mast-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+.mast-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.9rem 0; flex-wrap: wrap; }
 .mast-mark { font-family: var(--serif-display); font-weight: 600; font-size: 1.4rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); display: inline-flex; align-items: baseline; gap: 0.5rem; }
 .mast-mark:hover { text-decoration: none; }
 .mast-mark .gem { color: var(--accent); }
 .mast-tag { font-family: var(--serif-display); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.mast-nav { display: flex; gap: 1.3rem; }
+.mast-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; }
 .mast-nav a { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--civic); white-space: nowrap; }
 
 /* ---------- CTA ---------- */
