@@ -53,8 +53,8 @@ img { max-width: 100%; display: block; }
 }
 .byline { font-family: var(--serif-display); font-size: 0.9rem; color: var(--muted); letter-spacing: 0.02em; margin: 0; }
 
-.shell { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-.shell-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+.shell { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+.shell-narrow { max-width: 720px; margin: 0 auto; padding: 0 32px; }
 .rule { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 
 .ed-list { margin: 0; padding: 0; list-style: none; }
@@ -269,7 +269,7 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 860px) {
   body { font-size: 17px; }
-  .shell, .shell-narrow { padding: 0 20px; }
+  .shell, .shell-narrow { padding: 0 26px; }
   .mast-nav { gap: 0.9rem; }
   .spread, .spread-tight, .cost-strip { grid-template-columns: 1fr; }
 }
