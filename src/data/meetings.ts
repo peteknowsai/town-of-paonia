@@ -55,6 +55,7 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 526, start: "2026-06-01T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(526) },
   { eventId: 574, start: "2026-06-02T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(574) },
   { eventId: 581, start: "2026-06-02T18:30:00-06:00", title: "Board Agenda Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(581) },
+  { eventId: 583, start: "2026-06-03T17:30:00-06:00", title: "Special Town Board Meeting", kind: "special", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(583) },
   { eventId: 500, start: "2026-06-09T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(500) },
   { eventId: 570, start: "2026-06-15T18:00:00-06:00", title: "Zoning Board of Adjustments & Appeals", kind: "other", body: "Zoning Board of Adjustments", bodyKey: "zoning", eventUrl: ev(570) },
   { eventId: 539, start: "2026-06-16T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(539) },
