@@ -11,3 +11,6 @@ tsconfig.tsbuildinfo
 *.tsbuildinfo
 _ocr*
 *.pdf
+
+# Internal working notes / research (parking reform strategy, source docs) — not for the public site repo
+notes/

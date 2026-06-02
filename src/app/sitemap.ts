@@ -6,6 +6,8 @@ const BASE = "https://townofpaonia.co";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: "daily", priority: 1 },
+    { url: `${BASE}/parking`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/water`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/grants`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/cora`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/handbook`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },

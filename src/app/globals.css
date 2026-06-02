@@ -84,8 +84,9 @@ img { max-width: 100%; display: block; }
 .mast-mark:hover { text-decoration: none; }
 .mast-mark .gem { color: var(--accent); }
 .mast-tag { font-family: var(--serif-display); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.mast-nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; }
-.mast-nav a { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--civic); white-space: nowrap; }
+/* The masthead carries no section nav (that lives in the home directory and the
+   footer). Just one evergreen link to the official Town site. */
+.mast-official { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--civic); white-space: nowrap; }
 
 /* ---------- CTA ---------- */
 .cta { display: inline-block; font-family: var(--serif-display); font-weight: 600; letter-spacing: 0.03em; background: var(--accent); color: #fff; padding: 0.7rem 1.3rem; }
@@ -274,7 +275,6 @@ img { max-width: 100%; display: block; }
 @media (max-width: 860px) {
   body { font-size: 17px; }
   .shell, .shell-narrow { padding: 0 26px; }
-  .mast-nav { gap: 0.9rem; }
   .spread, .spread-tight, .cost-strip { grid-template-columns: 1fr; }
 }
 
@@ -558,3 +558,67 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--civic);
   margin: 0 0 0.3rem;
 }
+
+/* ============================================================
+   Parking page: framed hero, caption, comparable-towns table.
+   ============================================================ */
+.parking-hero { margin: 1.6rem 0 0.4rem; }
+.parking-hero img {
+  width: 100%; height: auto; border: 1px solid var(--rule);
+}
+.parking-hero figcaption {
+  font-family: var(--serif-display); font-size: 0.86rem; color: var(--muted);
+  margin-top: 0.5rem; line-height: 1.4;
+}
+
+/* Horizontal scroll container so a wide table never blows out the page on a
+   narrow screen (matches the overflow-x: clip strategy used site-wide). */
+.table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+.peer-table {
+  width: 100%; border-collapse: collapse; font-size: 0.96rem; line-height: 1.45;
+  min-width: 30rem;
+}
+.peer-table th {
+  font-family: var(--serif-display); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  text-align: left; padding: 0 0.8rem 0.5rem; border-bottom: 2px solid var(--ink);
+  vertical-align: bottom;
+}
+.peer-table td {
+  padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--rule);
+  vertical-align: top; color: var(--ink-soft);
+}
+.peer-table td:first-child, .peer-table th:first-child { padding-left: 0; }
+.peer-table td:nth-child(2) { white-space: nowrap; color: var(--civic-deep); font-variant-numeric: tabular-nums; }
+.peer-table strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   Home section directory: the tile grid that replaced the top nav.
+   Hairline-grid construction matches the grant cards. Adding a section
+   adds a tile and the grid reflows; nothing in the masthead has to move.
+   ============================================================ */
+.dir { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.dir-tile { background: var(--paper-card); padding: 1.25rem 1.3rem 1.35rem; display: flex; flex-direction: column; gap: 0.4rem; border-top: 3px solid transparent; color: var(--ink); min-height: 150px; }
+.dir-tile:hover { background: var(--paper-deep); border-top-color: var(--civic); text-decoration: none; }
+.dir-tile.is-current { border-top-color: var(--accent); }
+.dir-ic { color: var(--civic); height: 30px; display: flex; align-items: center; }
+.dir-ic svg { width: 27px; height: 27px; stroke: currentColor; fill: none; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+.dir-name { font-family: var(--serif-display); font-weight: 600; font-size: 1.16rem; line-height: 1.1; display: flex; align-items: center; gap: 0.5rem; color: var(--ink); }
+.dir-cur { font-family: var(--serif-display); font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.35rem; }
+.dir-desc { font-size: 0.93rem; color: var(--muted); line-height: 1.42; }
+@media (max-width: 560px) { .dir-tile { min-height: 0; } }
+
+/* Compact section bar: persistent nav at the top of every page except home
+   (home leads with the full grid above). Wraps instead of crowding. */
+.secbar { background: var(--paper); border-bottom: 1px solid var(--rule); }
+.secbar-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.3rem; padding: 0.3rem 0; }
+.secbar a { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--serif-display); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--civic); padding: 0.55rem 0; border-bottom: 2px solid transparent; }
+.secbar a:hover { text-decoration: none; color: var(--ink); }
+.secbar a.is-current { color: var(--accent); border-bottom-color: var(--accent); }
+.secbar-ic { display: inline-flex; }
+.secbar-ic svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 560px) { .secbar a { font-size: 11px; letter-spacing: 0.06em; } .secbar-ic svg { width: 15px; height: 15px; } }
+
+/* Footer section list: the cross-page nav backstop (every section, every page). */
+.foot-nav { display: flex; flex-wrap: wrap; gap: 0.55rem 1.4rem; padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid #2f4150; }
+.foot-nav a { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #e3b39c; white-space: nowrap; }

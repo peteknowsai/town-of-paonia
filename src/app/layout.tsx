@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
+import SectionBar from "@/components/SectionBar";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SiteHeader />
+        <SectionBar />
         <main>{children}</main>
         <SiteFooter />
       </body>
