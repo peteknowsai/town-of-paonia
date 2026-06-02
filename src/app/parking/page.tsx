@@ -68,7 +68,7 @@ export default function ParkingPage() {
         </p>
       </div>
 
-      {/* Primary actions: read the three documents */}
+      {/* Primary actions: read the proposal documents */}
       <div className="doc-card">
         <p className="eyebrow" style={{ marginBottom: "0.7rem" }}>
           Read the proposal
@@ -90,17 +90,35 @@ export default function ParkingPage() {
           >
             Slides (PDF)
           </a>
-          <Link className="btn btn-outline" href="/parking/survey">
-            Downtown survey
-          </Link>
         </div>
         <p className="doc-note">
           The proposal is a short brief on why this matters and what comparable
           towns have done, followed by a draft of Article 6 written so it can drop
-          into our code. The downtown survey is a live, two-minute form you can fill
-          out or print to hand out. The slides are the same proposal in presentation
-          form.
+          into our code. The slides are the same proposal in presentation form.
         </p>
+      </div>
+
+      {/* The survey: its own prominent action, with the QR shown here too */}
+      <div className="survey-cta">
+        <div className="survey-cta-body">
+          <p className="eyebrow" style={{ marginBottom: "0.5rem" }}>
+            Have your say
+          </p>
+          <h2 className="survey-cta-h">Take the 2-minute downtown parking survey</h2>
+          <p className="survey-cta-p">
+            Tell the Planning Commission how parking really works for you. Fill it out
+            online, or print it to hand out: there is a QR code on the sheet so anyone
+            can scan it and answer on their phone.
+          </p>
+          <Link className="btn btn-fill" href="/parking/survey">
+            Open the survey
+          </Link>
+        </div>
+        <Link href="/parking/survey" className="survey-cta-qr" aria-label="Open the downtown parking survey">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/parking/survey-qr.svg" alt="QR code linking to the downtown parking survey" width={108} height={108} />
+          <span>Scan to open</span>
+        </Link>
       </div>
 
       <div className="prose">
