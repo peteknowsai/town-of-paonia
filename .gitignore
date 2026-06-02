@@ -11,6 +11,8 @@ tsconfig.tsbuildinfo
 *.tsbuildinfo
 _ocr*
 *.pdf
+# ...but PDFs under public/ are published site assets and must be tracked.
+!public/**/*.pdf
 
 # Internal working notes / research (parking reform strategy, source docs) — not for the public site repo
 notes/
