@@ -593,6 +593,31 @@ img { max-width: 100%; display: block; }
 .peer-table strong { color: var(--ink); font-weight: 600; }
 
 /* ============================================================
+   Short-term rentals page: framed editorial illustrations and a
+   responsive "your situation / what you can do" cases block (a
+   table would force a no-wrap prose column and scroll on mobile).
+   ============================================================ */
+.str-fig { margin: 1.8rem 0 0.6rem; }
+.str-fig img { width: 100%; height: auto; border: 1px solid var(--rule); }
+.str-fig figcaption {
+  font-family: var(--serif-display); font-size: 0.86rem; color: var(--muted);
+  margin-top: 0.5rem; line-height: 1.4;
+}
+.str-cases { margin: 1.2rem 0 1.6rem; border-top: 2px solid var(--ink); }
+.str-case {
+  display: grid; grid-template-columns: 1fr 1.35fr; gap: 0.3rem 1.4rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--rule);
+}
+.str-case .q {
+  font-family: var(--serif-display); font-weight: 600; color: var(--ink);
+  line-height: 1.4;
+}
+.str-case .a { color: var(--ink-soft); line-height: 1.5; }
+@media (max-width: 34rem) {
+  .str-case { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* ============================================================
    Home section directory: the tile grid that replaced the top nav.
    Hairline-grid construction matches the grant cards. Adding a section
    adds a tile and the grid reflows; nothing in the masthead has to move.

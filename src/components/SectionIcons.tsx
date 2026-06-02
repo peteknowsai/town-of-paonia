@@ -58,4 +58,11 @@ export const ICONS: Record<SectionIcon, ReactNode> = {
       <path d="M5 20a7 7 0 0 1 14 0" />
     </svg>
   ),
+  housing: (
+    <svg viewBox="0 0 24 24">
+      <path d="M4 11 12 4l8 7" />
+      <path d="M6 10v10h12V10" />
+      <rect x="10" y="14" width="4" height="6" />
+    </svg>
+  ),
 };
