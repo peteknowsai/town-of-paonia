@@ -9,7 +9,6 @@ export const metadata = {
 
 // Downloadable documents (live in /public).
 const PROPOSAL_URL = "/parking-proposal.pdf";
-const SURVEY_URL = "/parking-survey.pdf";
 const SLIDES_URL = "/parking-slides.pdf";
 
 export default function ParkingPage() {
@@ -91,20 +90,16 @@ export default function ParkingPage() {
           >
             Slides (PDF)
           </a>
-          <a
-            className="btn btn-outline"
-            href={SURVEY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Downtown survey (PDF)
-          </a>
+          <Link className="btn btn-outline" href="/parking/survey">
+            Downtown survey
+          </Link>
         </div>
         <p className="doc-note">
           The proposal is a short brief on why this matters and what comparable
           towns have done, followed by a draft of Article 6 written so it can drop
-          into our code. The survey is a one-page sample we could run downtown. The
-          slides are the same proposal in presentation form.
+          into our code. The downtown survey is a live, two-minute form you can fill
+          out or print to hand out. The slides are the same proposal in presentation
+          form.
         </p>
       </div>
 
@@ -363,9 +358,9 @@ export default function ParkingPage() {
         <a className="btn btn-outline" href={SLIDES_URL} target="_blank" rel="noopener noreferrer">
           Slides (PDF)
         </a>
-        <a className="btn btn-outline" href={SURVEY_URL} target="_blank" rel="noopener noreferrer">
-          Downtown survey (PDF)
-        </a>
+        <Link className="btn btn-outline" href="/parking/survey">
+          Downtown survey
+        </Link>
       </div>
 
       <p className="sec-aside" style={{ marginTop: "1.6rem" }}>

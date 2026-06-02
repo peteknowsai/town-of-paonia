@@ -622,3 +622,79 @@ img { max-width: 100%; display: block; }
 /* Footer section list: the cross-page nav backstop (every section, every page). */
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0.55rem 1.4rem; padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid #2f4150; }
 .foot-nav a { font-family: var(--serif-display); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #e3b39c; white-space: nowrap; }
+
+/* ============================================================
+   Downtown parking survey: one page that is both the live online
+   form (writes to Convex) and, via the print rules below, a clean
+   one-page paper survey with a QR code back to the online version.
+   ============================================================ */
+.survey-intro { color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 1.4rem; max-width: 56ch; }
+.sv-form { display: flex; flex-direction: column; gap: 1.4rem; }
+.sv-sec { border: 1px solid var(--rule); padding: 0.4rem 1.2rem 1.2rem; margin: 0; }
+.sv-sec legend { font-family: var(--serif-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; padding: 0 0.45rem; color: var(--civic-deep); }
+.sv-field { display: flex; flex-direction: column; gap: 0.3rem; margin: 0.7rem 0; }
+.sv-field > span { font-family: var(--serif-display); font-size: 0.92rem; font-weight: 600; color: var(--ink-soft); }
+.sv-field input, .sv-form textarea {
+  font-family: var(--serif-body); font-size: 1rem; padding: 0.55rem 0.7rem;
+  border: 1px solid var(--rule); background: var(--paper-card); color: var(--ink); width: 100%;
+}
+.sv-field input:focus, .sv-form textarea:focus { outline: 2px solid var(--civic); outline-offset: 1px; }
+.sv-sub { margin-top: 0.5rem; }
+.sv-q { margin: 0.95rem 0; }
+.sv-label { display: block; font-size: 0.98rem; line-height: 1.4; margin-bottom: 0.5rem; }
+.sv-label b { font-family: var(--serif-display); color: var(--civic); margin-right: 0.15rem; }
+.sv-opts { display: flex; flex-wrap: wrap; gap: 0.45rem 0.6rem; }
+.sv-opt {
+  display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--paper-card); padding: 0.5rem 0.7rem;
+  font-size: 0.95rem; line-height: 1.2; min-height: 44px;
+}
+.sv-opt:hover { background: var(--paper-deep); }
+.sv-opt input { width: 17px; height: 17px; accent-color: var(--civic); }
+.sv-actions { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+
+.survey-foot { margin-top: 2.2rem; border-top: 1px solid var(--rule); padding-top: 1.3rem; }
+.survey-qr { display: flex; gap: 1.1rem; align-items: flex-start; }
+.survey-qr img { width: 118px; height: 118px; border: 1px solid var(--rule); background: #fff; padding: 6px; flex: none; }
+.survey-qr-cap { margin: 0 0 0.4rem; font-size: 0.98rem; line-height: 1.45; }
+.survey-drop { margin: 0; font-size: 0.92rem; color: var(--muted); line-height: 1.45; }
+
+/* ---- Print: turn the live form into a tidy one-page paper survey ---- */
+@media print {
+  .mast, .secbar, .site-foot, .no-print, .back { display: none !important; }
+  html, body { background: #fff; color: #000; font-size: 9.5pt; line-height: 1.32; }
+  @page { size: letter portrait; margin: 0.4in; }
+  .survey { max-width: none !important; padding: 0 !important; }
+  .survey-head h1 { font-size: 15pt !important; margin: 0 0 0.15rem !important; }
+  .survey-intro { font-size: 9pt; margin: 0 0 0.35rem; max-width: none; color: #000; }
+  .eyebrow { color: #000; }
+
+  .sv-form { gap: 0.42rem; }
+  .sv-sec { border: 1px solid #000; padding: 0.2rem 0.55rem 0.45rem; }
+  .sv-sec legend { font-size: 9.5pt; color: #000; }
+  .sv-field { gap: 0.1rem; margin: 0.28rem 0; }
+  .sv-field > span { font-size: 8.5pt; color: #000; }
+  .sv-q { margin: 0.3rem 0; }
+  .sv-label { margin-bottom: 0.2rem; }
+  .sv-label b { color: #000; }
+  .sv-opts { gap: 0.12rem 0.7rem; }
+
+  /* Text fields become write-in lines */
+  .sv-field input, .sv-form input:not([type="radio"]):not([type="checkbox"]) {
+    border: none !important; border-bottom: 1px solid #000 !important;
+    background: transparent !important; padding: 0 2px !important;
+  }
+  .sv-form textarea { border: 1px solid #000 !important; min-height: 2.4em; background: transparent !important; }
+
+  /* Options collapse to a checkbox/radio + label; force a visible empty box */
+  .sv-opt { border: none !important; background: transparent !important; padding: 0 !important; min-height: 0 !important; gap: 0.3rem; font-size: 9pt; }
+  .sv-opt input { -webkit-appearance: none; appearance: none; width: 11px; height: 11px; border: 1px solid #000; background: #fff; }
+  .sv-opt input[type="radio"] { border-radius: 50%; }
+
+  /* QR footer stays, compact */
+  .survey-foot { margin-top: 0.45rem; border-top: 1px solid #000; padding-top: 0.45rem; }
+  .survey-qr img { width: 84px; height: 84px; padding: 3px; }
+  .survey-qr-cap { font-size: 9pt; }
+  .survey-drop { font-size: 8pt; color: #000; }
+  .sec-aside { font-size: 7.5pt; color: #000; }
+}

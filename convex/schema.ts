@@ -23,4 +23,25 @@ export default defineSchema({
     why: v.optional(v.string()),
     createdAt: v.number(),
   }),
+
+  // Downtown parking survey responses. Filled online (scanned from the printed
+  // sheet's QR, or on the web) and stored here. Every field is optional so a
+  // partial answer is still recorded; multi-select questions are string arrays.
+  parkingSurvey: defineTable({
+    businessName: v.optional(v.string()),
+    businessOwner: v.optional(v.string()),
+    businessAddress: v.optional(v.string()),
+    block: v.optional(v.string()),
+    roles: v.array(v.string()),
+    enoughParking: v.optional(v.string()),
+    hardestTimes: v.array(v.string()),
+    barrier: v.optional(v.string()),
+    barrierDetail: v.optional(v.string()),
+    parkWhere: v.array(v.string()),
+    position: v.optional(v.string()),
+    comments: v.optional(v.string()),
+    followUpContact: v.optional(v.string()),
+    source: v.optional(v.string()),
+    createdAt: v.number(),
+  }),
 });
