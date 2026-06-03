@@ -72,3 +72,62 @@ describe("rfp data integrity", () => {
     expect(searchFirms.some((f) => f.co), "at least one Colorado-based firm").toBe(true);
   });
 });
+
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import {
+  paoniaRfps,
+  getPaoniaRfp,
+  rfpChecklist,
+  costBenchmarks,
+  winnerCases,
+  winningBidTraits,
+} from "./rfps";
+
+const PUBLIC = join(process.cwd(), "public");
+
+describe("paonia per-RFP explainers", () => {
+  it("each RFP has the fields the detail page renders", () => {
+    expect(paoniaRfps.length).toBeGreaterThan(0);
+    for (const r of paoniaRfps) {
+      const where = r.number;
+      expect(Boolean(r.slug && /^[a-z0-9-]+$/.test(r.slug)), `${where}: clean slug`).toBe(true);
+      expect(Boolean(r.title), `${where}: title`).toBe(true);
+      expect(Boolean(r.oneLiner && r.oneLiner.length > 20), `${where}: oneLiner`).toBe(true);
+      expect(r.summary.length, `${where}: summary paragraphs`).toBeGreaterThan(0);
+      expect(r.whatItDoes.length, `${where}: whatItDoes`).toBeGreaterThan(0);
+      expect(r.funding.length, `${where}: funding`).toBeGreaterThan(0);
+      expect(r.timeline.length, `${where}: timeline`).toBeGreaterThan(0);
+      expect(r.facts.length, `${where}: facts`).toBeGreaterThan(0);
+      expect(mdy(r.closing), `${where}: closing date`).toBe(true);
+      expect(getPaoniaRfp(r.slug)?.number, `${where}: lookup works`).toBe(r.number);
+    }
+  });
+
+  it("every hosted document actually exists in /public and is under Cloudflare's 25 MiB asset limit", () => {
+    for (const r of paoniaRfps) {
+      expect(r.docs.length, `${r.number}: has documents`).toBeGreaterThan(0);
+      for (const d of r.docs) {
+        expect(d.file.startsWith("/rfp/"), `${r.number}: ${d.label} path under /rfp`).toBe(true);
+        const abs = join(PUBLIC, d.file);
+        expect(existsSync(abs), `${r.number}: missing file ${d.file}`).toBe(true);
+      }
+    }
+  });
+});
+
+describe("search-firm RFP guidance", () => {
+  it("checklist, cost benchmarks, winners, and traits are populated", () => {
+    expect(rfpChecklist.length).toBeGreaterThan(4);
+    for (const s of rfpChecklist) {
+      expect(Boolean(s.heading && s.detail && s.detail.length > 20), `${s.heading}: substantive`).toBe(true);
+    }
+    expect(costBenchmarks.length).toBeGreaterThan(1);
+    expect(costBenchmarks.some((c) => c.emphasis), "one emphasized (size-comparable) benchmark").toBe(true);
+    expect(winnerCases.length).toBeGreaterThan(0);
+    for (const w of winnerCases) {
+      expect(Boolean(w.firm && w.agency && w.why), `${w.agency}: complete`).toBe(true);
+    }
+    expect(winningBidTraits.length).toBeGreaterThan(2);
+  });
+});

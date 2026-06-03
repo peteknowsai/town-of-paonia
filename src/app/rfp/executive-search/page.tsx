@@ -2,14 +2,19 @@ import Link from "next/link";
 import {
   comparables,
   searchFirms,
+  rfpChecklist,
+  costBenchmarks,
+  costNote,
+  winnerCases,
+  winningBidTraits,
   RMEPS_CLOSED_COUNT,
   RMEPS_CLOSED_URL,
 } from "@/data/rfps";
 
 export const metadata = {
-  title: "How Colorado towns hire an executive search firm | Transparent Towns — Paonia",
+  title: "Hiring a search firm: what to ask for, what it costs | Transparent Towns — Paonia",
   description:
-    "Comparable executive-search-firm RFPs from Colorado cities, towns, and counties, pulled from the Rocky Mountain e-Purchasing System: who they searched for, how they wrote the RFP, which firms competed, and who won.",
+    "If Paonia hires an executive search firm for its next Town Administrator: what belongs in the RFP, what comparable Colorado towns actually pay, and what the winning bids looked like. Grounded in the public BidNet record.",
 };
 
 const govLabel: Record<string, string> = {
@@ -60,27 +65,109 @@ export default function ExecutiveSearchPage() {
           margin: "0 0 0.5rem",
         }}
       >
-        How Colorado governments hire an executive search firm
+        Hiring a search firm: what to ask for, what it costs
       </h1>
       <p className="byline" style={{ fontSize: "1.05rem" }}>
-        Real comparables for a Town Administrator search, pulled from BidNet
+        A working brief for a Town Administrator search, grounded in the public record
       </p>
 
       <hr className="rule" style={{ margin: "1.4rem 0 1.6rem" }} />
 
       <p className="prose" style={{ fontSize: "1.12rem" }}>
-        Before a town pays a firm to run a search, it helps to see how comparable
-        governments have done it. The Rocky Mountain e-Purchasing System (RMEPS),
-        the same BidNet platform Paonia posts on, keeps a public record of every
-        closed solicitation. We searched it for executive-search-firm
-        contracts and pulled{" "}
+        If the Board hires an executive search firm to find Paonia&rsquo;s next
+        Town Administrator, three questions matter: what should go in our RFP,
+        what do towns actually pay, and what did the winning bids look like? This
+        page answers all three, drawn from how comparable Colorado governments
+        have done it on{" "}
         <a href={RMEPS_CLOSED_URL} target="_blank" rel="noopener noreferrer">
-          all {RMEPS_CLOSED_COUNT} matches
-        </a>
-        . The ones most like a Town Administrator search are below.
+          the public BidNet record
+        </a>{" "}
+        ({RMEPS_CLOSED_COUNT} closed executive-search solicitations).
       </p>
 
-      {/* The headline finding */}
+      {/* 1. What to put in our RFP */}
+      <h2 className="section-head">What should be in Paonia&rsquo;s RFP</h2>
+      <p className="prose">
+        A short, well-built RFP gets better bids than a long vague one. Adapted
+        from the City Manager RFPs in the record below and what the winning firms
+        actually delivered, here is what to ask for:
+      </p>
+      <div className="ledger" style={{ marginTop: "0.8rem" }}>
+        {rfpChecklist.map((s, i) => (
+          <div key={i} className="ledger-row">
+            <div className="ledger-phase">
+              <span>
+                <span style={{ color: "var(--muted)", marginRight: "0.5rem" }}>
+                  {i + 1}.
+                </span>
+                {s.heading}
+              </span>
+            </div>
+            <p className="ledger-we" style={{ margin: 0 }}>
+              {s.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* 2. What it costs */}
+      <h2 className="section-head">What towns pay</h2>
+      <div className="cost-strip">
+        {costBenchmarks.map((c) => (
+          <div key={c.label} style={c.emphasis ? { borderTopColor: "var(--accent)" } : undefined}>
+            <strong>{c.amount}</strong>
+            <span>{c.label}</span>
+            <em>{c.detail}</em>
+          </div>
+        ))}
+      </div>
+      <div className="note" style={{ marginTop: "1.2rem" }}>
+        <p>{costNote}</p>
+      </div>
+      <p className="prose" style={{ marginTop: "1rem" }}>
+        Want a specific town&rsquo;s fee? It is a public record. We have a{" "}
+        <Link href="/cora">ready-made records request</Link> you can send the
+        clerk, citing the solicitation number from the table below.
+      </p>
+
+      {/* 3. What winning bids looked like */}
+      <h2 className="section-head">What the winning bids looked like</h2>
+      <p className="prose">
+        For most of these searches the fee never reached the open web, but the{" "}
+        <em>winners</em> did. Here is who actually got hired, and our read on why:
+      </p>
+      <div style={{ margin: "1.1rem 0" }}>
+        {winnerCases.map((w) => (
+          <div key={w.agency + w.year} className="card" style={{ marginBottom: "0.8rem" }}>
+            <h3 style={{ marginBottom: "0.3rem" }}>
+              {w.firm}{" "}
+              <span style={{ fontWeight: 400, color: "var(--muted)", fontSize: "0.85rem" }}>
+                &middot; {w.base}
+              </span>
+            </h3>
+            <p style={{ marginBottom: "0.4rem" }}>
+              <span className="chip chip-civic" style={{ fontSize: "0.6rem", marginRight: "0.4rem" }}>
+                {w.agency}
+              </span>
+              <span style={{ color: "var(--muted)", fontSize: "0.85rem" }}>
+                {w.role}, {w.year}
+              </span>
+            </p>
+            <p>{w.why}</p>
+          </div>
+        ))}
+      </div>
+      <div className="callout">
+        <p style={{ margin: "0 0 0.5rem", fontWeight: 600 }}>The pattern in winning bids</p>
+        <ul className="prose tick" style={{ margin: 0 }}>
+          {winningBidTraits.map((t, i) => (
+            <li key={i}>{t}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* The evidence base */}
+      <h2 className="section-head">The record behind this brief</h2>
       <div className="callout">
         <p style={{ margin: 0 }}>
           <strong>What the record shows:</strong> almost every Colorado
@@ -99,7 +186,10 @@ export default function ExecutiveSearchPage() {
       </div>
 
       {/* The comparison table */}
-      <h2 className="section-head">The comparables</h2>
+      <p className="prose" style={{ marginTop: "1.2rem" }}>
+        The comparables, most-like-a-manager-search first. Each links to its
+        source record.
+      </p>
       <div className="table-wrap">
         <table className="peer-table">
           <thead>
@@ -159,8 +249,8 @@ export default function ExecutiveSearchPage() {
         always undisclosed.
       </p>
 
-      {/* What stands out */}
-      <h2 className="section-head">What stands out</h2>
+      {/* How structures differ */}
+      <h2 className="section-head">How the structures differ</h2>
       <div style={{ margin: "1.1rem 0" }}>
         {managerStandouts.map((c) => (
           <div
@@ -188,10 +278,11 @@ export default function ExecutiveSearchPage() {
       {/* The firm roster */}
       <h2 className="section-head">Who competes for these searches</h2>
       <p className="prose">
-        This is a real shortlist, not a guess: these are the executive-search
-        firms that downloaded the City of Durango&rsquo;s City Manager RFP in
-        2019 and actually do municipal recruitment. Four are Colorado-based. Any
-        RFP Paonia issued would likely draw from the same pool.
+        This is a real shortlist, not a guess: the executive-search firms that
+        actually do Colorado municipal recruitment, including those that pulled
+        the City of Durango&rsquo;s City Manager RFP and the confirmed winners
+        above. Several are Colorado-based. Any RFP Paonia issued would likely
+        draw from the same pool.
       </p>
       <div className="spread" style={{ marginTop: "1.1rem" }}>
         {searchFirms.map((f) => (

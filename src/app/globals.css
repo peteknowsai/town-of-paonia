@@ -734,3 +734,79 @@ img { max-width: 100%; display: block; }
   .survey-drop { font-size: 8.5pt; color: #000; }
   .sec-aside { font-size: 7.5pt; color: #000; margin-top: 0.5rem !important; }
 }
+
+/* ============================================================
+   RFP detail pages (/rfp/[slug]): hero, at-a-glance fact grid,
+   vertical timeline, ticked lists, and document download rows.
+   ============================================================ */
+.rfp-hero { margin: 1.6rem 0 0.4rem; }
+.rfp-hero img { width: 100%; height: auto; border: 1px solid var(--rule); }
+.rfp-hero figcaption {
+  font-family: var(--serif-display); font-size: 0.86rem; color: var(--muted);
+  margin-top: 0.5rem; line-height: 1.4;
+}
+
+/* At-a-glance stat grid (the HTML/SVG "infographic" summary) */
+.fact-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule);
+  margin: 1.6rem 0 1.2rem;
+}
+.fact {
+  background: var(--paper-card); padding: 0.9rem 1rem; display: flex;
+  flex-direction: column; gap: 0.15rem;
+}
+.fact-v {
+  font-family: var(--serif-display); font-weight: 560; font-size: 1.3rem;
+  line-height: 1.1; color: var(--ink); letter-spacing: -0.01em;
+}
+.fact-l {
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+}
+@media (max-width: 560px) { .fact-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Vertical timeline */
+.rfp-timeline { list-style: none; margin: 1.1rem 0; padding: 0; }
+.rfp-timeline li {
+  position: relative; padding: 0 0 1rem 1.5rem; border-left: 2px solid var(--rule);
+  margin-left: 0.4rem;
+}
+.rfp-timeline li:last-child { padding-bottom: 0; }
+.rfp-timeline li::before {
+  content: ""; position: absolute; left: -7px; top: 0.2rem; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--paper); border: 2px solid var(--rule);
+}
+.rfp-timeline li.is-done::before { background: var(--civic); border-color: var(--civic); }
+.rfp-timeline li.is-next::before { background: var(--accent); border-color: var(--accent); }
+.rfp-timeline li.is-next { border-left-color: var(--accent); }
+.tl-date {
+  display: block; font-family: var(--serif-display); font-variant-numeric: tabular-nums;
+  font-size: 0.8rem; font-weight: 600; color: var(--civic-deep); letter-spacing: 0.02em;
+}
+.tl-label { display: block; font-size: 0.98rem; line-height: 1.45; margin-top: 0.1rem; }
+.rfp-timeline li.is-next .tl-label { font-weight: 600; }
+
+/* Ticked list (used for "what it does", "how it works", winning-bid traits) */
+ul.tick { list-style: none; padding: 0; margin: 0.8rem 0; }
+ul.tick li { position: relative; padding: 0 0 0 1.5rem; margin: 0.55rem 0; line-height: 1.5; }
+ul.tick li::before {
+  content: ""; position: absolute; left: 0; top: 0.42em; width: 0.5rem; height: 0.5rem;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+/* Document download rows */
+.doc-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--rule); text-decoration: none;
+}
+.doc-row:first-child { border-top: 1px solid var(--rule); }
+.doc-row:hover { background: var(--paper-card); }
+.doc-row-main { display: flex; flex-direction: column; gap: 0.15rem; }
+.doc-row-main strong { color: var(--civic); font-weight: 600; }
+.doc-row-note { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.doc-row-size {
+  font-family: var(--serif-display); font-size: 0.82rem; font-weight: 600;
+  color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums;
+}

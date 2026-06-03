@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { paoniaOpen, PAONIA_BIDNET_URL } from "@/data/rfps";
+import { paoniaRfps, PAONIA_BIDNET_URL } from "@/data/rfps";
 import { SEARCH_PUBLISHED } from "@/data/position";
 
 export const metadata = {
@@ -44,58 +44,43 @@ export default function RfpPage() {
 
       <p className="prose" style={{ fontSize: "1.12rem" }}>
         When the Town needs a contractor, an engineer, or a service, it posts a
-        bid or a request for proposals on the Rocky Mountain e-Purchasing System
-        (BidNet), the same system most Colorado local governments use. Anyone can
-        read the list for free. Below is what is open right now.
+        bid or a request for proposals. The official versions live on a vendor
+        system called BidNet, where reading the full documents means making an
+        account. We have written each one up in plain language and mirrored the
+        documents here, so you can follow along without signing in anywhere.
       </p>
 
-      {/* Current open solicitations */}
+      {/* Current open solicitations -> citizen explainer pages */}
       <h2 className="section-head">Open right now</h2>
       <div style={{ margin: "1.1rem 0 0.4rem" }}>
-        {paoniaOpen.map((r) => (
-          <a
-            key={r.number}
-            href={r.url}
-            target="_blank"
-            rel="noopener noreferrer"
+        {paoniaRfps.map((r) => (
+          <Link
+            key={r.slug}
+            href={`/rfp/${r.slug}`}
             className="card"
-            style={{
-              display: "block",
-              marginBottom: "0.8rem",
-              textDecoration: "none",
-            }}
+            style={{ display: "block", marginBottom: "0.8rem", textDecoration: "none" }}
           >
             <h3 style={{ marginBottom: "0.3rem" }}>
               {r.number}: {r.title}
             </h3>
-            <p>
-              Published {r.published} &middot;{" "}
+            <p>{r.oneLiner}</p>
+            <p style={{ marginTop: "0.45rem" }}>
               <strong style={{ color: "var(--accent-deep)" }}>
-                Closes {r.closing}
+                Bids due {r.closing}
               </strong>{" "}
-              &middot; View on BidNet →
+              &middot; Read the plain-language explainer →
             </p>
-          </a>
+          </Link>
         ))}
       </div>
 
-      <div className="note" style={{ marginTop: "1rem" }}>
-        <p>
-          On BidNet, the full description, documents, and contact for an{" "}
-          <strong>open</strong> solicitation are visible only to registered
-          vendors. Registration is free. Once a solicitation closes, its full
-          record becomes public, which is why the comparison below can show other
-          towns&rsquo; searches in detail.
-        </p>
-      </div>
-
       <p className="prose" style={{ marginTop: "1.2rem" }}>
-        See the Town&rsquo;s full bid board, including closed and awarded
-        solicitations, on{" "}
+        For the Town&rsquo;s full bid board, including closed and awarded
+        solicitations, see{" "}
         <a href={PAONIA_BIDNET_URL} target="_blank" rel="noopener noreferrer">
           the Town of Paonia BidNet page
-        </a>
-        , or on the{" "}
+        </a>{" "}
+        or the{" "}
         <a href={OFFICIAL_RFP_URL} target="_blank" rel="noopener noreferrer">
           official Town website
         </a>
