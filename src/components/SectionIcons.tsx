@@ -32,6 +32,15 @@ export const ICONS: Record<SectionIcon, ReactNode> = {
       <line x1="18" y1="12" x2="18.01" y2="12" />
     </svg>
   ),
+  rfp: (
+    <svg viewBox="0 0 24 24">
+      <rect x="5" y="3" width="14" height="18" rx="1.5" />
+      <rect x="9" y="2" width="6" height="3" rx="1" />
+      <line x1="8.5" y1="10" x2="15.5" y2="10" />
+      <line x1="8.5" y1="13.5" x2="15.5" y2="13.5" />
+      <line x1="8.5" y1="17" x2="12.5" y2="17" />
+    </svg>
+  ),
   handbook: (
     <svg viewBox="0 0 24 24">
       <path d="M12 6C10 4.6 6.5 4.6 4 5.2V19c2.5-.6 6-.6 8 .8 2-1.4 5.5-1.4 8-.8V5.2C17.5 4.6 14 4.6 12 6Z" />

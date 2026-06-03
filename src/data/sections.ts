@@ -9,6 +9,7 @@ export type SectionIcon =
   | "parking"
   | "water"
   | "grants"
+  | "rfp"
   | "handbook"
   | "records"
   | "recall"
@@ -60,6 +61,12 @@ export const SECTIONS: Section[] = [
     name: "Grants",
     icon: "grants",
     desc: "Every grant the town is chasing, tracked in one place.",
+  },
+  {
+    href: "/rfp",
+    name: "Bids & RFPs",
+    icon: "rfp",
+    desc: "What the town has out to bid, and how towns hire.",
   },
   {
     href: "/handbook",
