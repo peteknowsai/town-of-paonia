@@ -66,10 +66,16 @@ export default function RecallPage() {
           spend public money on newspaper ads attacking it. Even the Board would not go
           that far, and refused the ads.
         </p>
+        <p>
+          Here is what matters most. Truth is a complete defense to libel. Every claim in
+          that flyer was sourced to a public document, and she disputed not one of them.
+          What she called &ldquo;libelous&rdquo; was provably true. The only demonstrably
+          false statement in this exchange was hers, the camera claim documented below.
+        </p>
 
         <h2>And when residents asked for accountability, silence was the answer.</h2>
         <p>
-          A formal complaint laying out this pattern sat unanswered for sixteen months.
+          A formal complaint laying out this pattern sat unanswered for eighteen months.
           A flyer, by contrast, got a special meeting within five days. That tells you
           who this government believes it answers to.
         </p>
@@ -103,6 +109,10 @@ export default function RecallPage() {
           records, the Board complaint letter of March 2026, court filings, and
           published news coverage. Nothing here is rumor. If a claim could not be
           sourced to a public document, it is not on this page.
+        </p>
+        <p style={{ fontSize: "0.95rem", color: "var(--muted)" }}>
+          For the full documented record, with every source, see{" "}
+          <a href="https://paoniatruth.site">paoniatruth.site</a>.
         </p>
       </div>
     </article>
