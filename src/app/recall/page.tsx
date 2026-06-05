@@ -44,7 +44,8 @@ export default function RecallPage() {
           Administrator, named the employee, and characterized her inquiry as a
           complaint before she had ever called it one. Twenty-three days later, that
           employee was terminated. The Town has never explained the basis for the
-          firing.
+          firing.{" "}
+          <a href="https://paoniatruth.site/articles/she-asked-a-question">Read the full story.</a>
         </p>
 
         <h2>An elected trustee was removed after he started asking questions.</h2>
@@ -54,7 +55,8 @@ export default function RecallPage() {
           questions, filing records requests, and pushing for oversight, the Town
           Administrator submitted a resignation he said he would withdraw only if
           Brunner were removed. Mayor Smith brought the charges and personally
-          prosecuted Brunner&apos;s removal. The choice voters had just made was undone.
+          prosecuted Brunner&apos;s removal. The choice voters had just made was undone.{" "}
+          <a href="https://paoniatruth.site/articles/the-vote-they-erased">Read the full story.</a>
         </p>
 
         <h2>She branded my sourced criticism &ldquo;libelous,&rdquo; and pushed to spend public money attacking it.</h2>
@@ -70,14 +72,16 @@ export default function RecallPage() {
           Here is what matters most. Truth is a complete defense to libel. Every claim in
           that flyer was sourced to a public document, and she disputed not one of them.
           What she called &ldquo;libelous&rdquo; was provably true. The only demonstrably
-          false statement in this exchange was hers, the camera claim documented below.
+          false statement in this exchange was hers, the camera claim documented below.{" "}
+          <a href="https://paoniatruth.site/articles/she-called-the-truth-libelous">Read the full story.</a>
         </p>
 
         <h2>And when residents asked for accountability, silence was the answer.</h2>
         <p>
           A formal complaint laying out this pattern sat unanswered for eighteen months.
           A flyer, by contrast, got a special meeting within five days. That tells you
-          who this government believes it answers to.
+          who this government believes it answers to.{" "}
+          <a href="https://paoniatruth.site/articles/eighteen-months-of-silence">Read the full story.</a>
         </p>
 
         <h2>The same letter misled residents about the surveillance cameras.</h2>
@@ -90,7 +94,8 @@ export default function RecallPage() {
           them inside the Town&apos;s own records, prove it. I showed this on the record
           and asked the Town to take the false claim down. They refused and left it on
           the town website, while two of those cameras keep filming the public to this
-          day.
+          day.{" "}
+          <a href="https://paoniatruth.site/articles/the-cameras-that-never-sleep">Read the full story.</a>
         </p>
 
         <h2>Why a recall, and why now</h2>
