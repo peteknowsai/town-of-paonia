@@ -175,6 +175,8 @@ img { max-width: 100%; display: block; }
 .ts-form input:focus, .ts-form textarea:focus { outline: 2px solid var(--civic); outline-offset: 1px; }
 .ts-form .check { flex-direction: row; align-items: flex-start; gap: 0.5rem; font-weight: 400; font-size: 0.9rem; line-height: 1.45; }
 .ts-form .check input { margin-top: 0.2rem; }
+.ts-form .ts-checks { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.ts-form .ts-checks legend { font-family: var(--serif-display); font-size: 0.92rem; font-weight: 600; color: var(--ink-soft); padding: 0; margin-bottom: 0.2rem; }
 .ts-form button { align-self: flex-start; border: none; cursor: pointer; }
 .ts-form button:disabled { opacity: 0.6; cursor: default; }
 .form-done { background: var(--paper-card); border-left: 4px solid var(--accent); padding: 1rem 1.2rem; font-size: 0.98rem; line-height: 1.55; margin-top: 1rem; }

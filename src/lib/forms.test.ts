@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateInterest, validateCommittee, validateParkingSurvey } from "./forms";
+import { validateInterest, validateCommittee, validateParkingSurvey, validateRecall } from "./forms";
 
 describe("validateInterest", () => {
   it("accepts a valid submission and normalizes optionals", () => {
@@ -59,6 +59,42 @@ describe("validateCommittee", () => {
   it("rejects missing fields", () => {
     expect(validateCommittee({ email: "a@b.co" }).kind).toBe("invalid");
     expect(validateCommittee({ name: "A" }).kind).toBe("invalid");
+  });
+});
+
+describe("validateRecall", () => {
+  it("accepts a signup, normalizes the help array and forces source=join", () => {
+    const r = validateRecall({
+      name: "  Pat Lee ",
+      email: "pat@example.com",
+      phone: " 970-555-1212 ",
+      help: ["petition", "", "gather"], // empties dropped
+      note: "",
+      source: "tampered", // client-supplied source is ignored
+    });
+    expect(r.kind).toBe("ok");
+    if (r.kind === "ok") {
+      expect(r.args.name).toBe("Pat Lee");
+      expect(r.args.phone).toBe("970-555-1212");
+      expect(r.args.help).toEqual(["petition", "gather"]);
+      expect(r.args.note).toBeUndefined();
+      expect(r.args.source).toBe("join");
+    }
+  });
+
+  it("accepts a bare name+email with no help selected", () => {
+    const r = validateRecall({ name: "Sam", email: "sam@example.com" });
+    expect(r.kind).toBe("ok");
+    if (r.kind === "ok") expect(r.args.help).toEqual([]);
+  });
+
+  it("drops a honeypot hit", () => {
+    expect(validateRecall({ name: "Bot", email: "b@b.co", website: "x" }).kind).toBe("drop");
+  });
+
+  it("rejects missing name or bad email", () => {
+    expect(validateRecall({ email: "a@b.co" }).kind).toBe("invalid");
+    expect(validateRecall({ name: "A", email: "nope" }).kind).toBe("invalid");
   });
 });
 

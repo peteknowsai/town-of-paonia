@@ -18,6 +18,15 @@ export type CommitteeArgs = {
   why?: string;
 };
 
+export type RecallArgs = {
+  name: string;
+  email: string;
+  phone?: string;
+  help: string[];
+  note?: string;
+  source?: string;
+};
+
 export type ParkingSurveyArgs = {
   businessName?: string;
   businessOwner?: string;
@@ -103,6 +112,25 @@ export function validateCommittee(body: Record<string, unknown>): Validation<Com
       email: gate.email,
       connection: optional(body.connection),
       why: optional(body.why),
+    },
+  };
+}
+
+// Recall-campaign supporter sign-up from /join. Same name+email gate as the
+// candidate funnels, plus an optional phone, a multi-select of how they want to
+// help, and a note. Source is stamped server-side, never trusted from the client.
+export function validateRecall(body: Record<string, unknown>): Validation<RecallArgs> {
+  const gate = gateNameEmail(body);
+  if ("kind" in gate) return gate;
+  return {
+    kind: "ok",
+    args: {
+      name: gate.name,
+      email: gate.email,
+      phone: capped(body.phone, 40),
+      help: stringArray(body.help),
+      note: capped(body.note, 1500),
+      source: "join",
     },
   };
 }

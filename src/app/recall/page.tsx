@@ -108,6 +108,15 @@ export default function RecallPage() {
           it is grassroots, and it runs on signatures from our own neighbors.
         </p>
 
+        <aside className="note" style={{ marginTop: "2rem" }}>
+          <p>
+            <strong>Want to help?</strong> You can sign the petition, gather signatures,
+            or just stay posted. <a href="/join">Add your name and I will keep you in the
+            loop</a>, or come find me at a Greet &amp; Meet: Tuesdays at the park by the
+            center stage and Thursdays at Sweetgrass, both 10:15 AM to noon.
+          </p>
+        </aside>
+
         <hr className="rule" />
         <p style={{ fontSize: "0.95rem", color: "var(--muted)" }}>
           Every fact on this page comes from public records: Town budgets and meeting

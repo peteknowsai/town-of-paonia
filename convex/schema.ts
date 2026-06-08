@@ -15,6 +15,21 @@ export default defineSchema({
     createdAt: v.number(),
   }),
 
+  // Recall-campaign supporters who want to stay involved. Gathered from the
+  // /join page (linked off the Greet & Meet flyer and Facebook posts) so people
+  // who can't attend in person can still get updates. Held by the campaign.
+  recall: defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.optional(v.string()),
+    // How they want to help: any of "petition", "gather", "host", "donate",
+    // "updates". Free of gatekeeping; an empty list still records the contact.
+    help: v.array(v.string()),
+    note: v.optional(v.string()),
+    source: v.optional(v.string()),
+    createdAt: v.number(),
+  }),
+
   // Open, self-nominated sign-ups for the citizens' committee.
   committee: defineTable({
     name: v.string(),
