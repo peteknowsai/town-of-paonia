@@ -26,11 +26,22 @@ export default async function HomePage({
     <>
       {/* Wide directory band: the way you get around the site. */}
       <div className="shell" style={{ paddingTop: "2rem" }}>
-        <p className="eyebrow">What is happening in Paonia</p>
-        <h1 className="title-h1 font-display">Paonia town hall, in plain sight</h1>
-        <p className="title-sub">
-          Pick a topic below, or scroll down for the meeting calendar.
-        </p>
+        <div className="home-head">
+          <div className="home-head-text">
+            <p className="eyebrow">What is happening in Paonia</p>
+            <h1 className="title-h1 font-display">Paonia town hall, in plain sight</h1>
+            <p className="title-sub">
+              Pick a topic below, or scroll down for the meeting calendar.
+            </p>
+          </div>
+          <a href="/join" className="home-cta">
+            <span className="home-cta-k">Get involved</span>
+            <span className="home-cta-t">
+              Join the conversation <span aria-hidden>→</span>
+            </span>
+            <span className="home-cta-s">Greet &amp; Meet + the recall</span>
+          </a>
+        </div>
         <div style={{ marginTop: "1.4rem" }}>
           <SectionDirectory currentPath="/" />
         </div>

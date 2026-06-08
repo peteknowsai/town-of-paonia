@@ -203,6 +203,22 @@ img { max-width: 100%; display: block; }
 .title-h1 { font-family: var(--serif-display); font-weight: 560; font-size: clamp(1.8rem, 4.5vw, 2.2rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0.45rem 0 0.5rem; text-wrap: balance; }
 .title-sub { color: var(--muted); font-size: 1.05rem; margin: 0; max-width: 48ch; text-wrap: pretty; }
 
+/* Home header: title on the left, prominent "Join the conversation" CTA right. */
+.home-head { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.home-head-text { flex: 1 1 22rem; min-width: 0; }
+.home-cta {
+  flex: 0 0 auto; display: flex; flex-direction: column; justify-content: center;
+  background: var(--accent); color: #fff; text-decoration: none;
+  padding: 0.85rem 1.35rem; border-radius: 12px; min-width: 16rem;
+  box-shadow: 0 2px 0 var(--accent-deep);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.home-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 0 var(--accent-deep); }
+.home-cta-k { font-family: var(--serif-display); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.85; }
+.home-cta-t { font-family: var(--serif-display); font-weight: 600; font-size: 1.3rem; line-height: 1.12; margin-top: 0.15rem; }
+.home-cta-s { font-size: 0.85rem; opacity: 0.88; margin-top: 0.2rem; }
+@media (max-width: 640px) { .home-cta { width: 100%; min-width: 0; } }
+
 /* Buttons (senior-friendly tap targets) */
 .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif-display); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em; min-height: 56px; padding: 0.7rem 1.4rem; border: 2px solid var(--civic); cursor: pointer; line-height: 1.15; }
 .btn:hover { text-decoration: none; }
