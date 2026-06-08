@@ -59,7 +59,20 @@ img { max-width: 100%; display: block; }
 
 .shell { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
 .shell-narrow { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+.shell-wide { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
 .rule { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+/* Admin supporter dashboard table. */
+.admin-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.admin-table th, .admin-table td {
+  text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--rule);
+  vertical-align: top; line-height: 1.4;
+}
+.admin-table th {
+  font-family: var(--serif-display); font-weight: 600; color: var(--civic-deep);
+  border-bottom-width: 2px; white-space: nowrap;
+}
+.admin-table tr:hover td { background: var(--paper-card); }
 
 .ed-list { margin: 0; padding: 0; list-style: none; }
 .ed-list li { position: relative; padding-left: 1rem; margin: 0 0 0.7rem; line-height: 1.5; }

@@ -50,9 +50,9 @@ export default function JoinPage() {
         Or come find me in person
       </h2>
       <p className="prose">
-        I host an open Greet &amp; Meet twice a week. Anyone is welcome, including board
-        members. Come say hello, bring your own questions, and sign the petition if you
-        want to. I am there to listen.
+        I host an open Greet &amp; Meet twice a week, from now through Cherry Days. Anyone
+        is welcome, including board members. Come say hello, bring your own questions, and
+        sign the petition if you want to. I am there to listen.
       </p>
       <ul className="ed-list">
         <li>

@@ -10,7 +10,10 @@
 
 import type * as admin from "../admin.js";
 import type * as committee from "../committee.js";
+import type * as crons from "../crons.js";
 import type * as interest from "../interest.js";
+import type * as parkingSurvey from "../parkingSurvey.js";
+import type * as recall from "../recall.js";
 
 import type {
   ApiFromModules,
@@ -21,7 +24,10 @@ import type {
 declare const fullApi: ApiFromModules<{
   admin: typeof admin;
   committee: typeof committee;
+  crons: typeof crons;
   interest: typeof interest;
+  parkingSurvey: typeof parkingSurvey;
+  recall: typeof recall;
 }>;
 
 /**

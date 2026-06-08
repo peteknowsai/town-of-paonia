@@ -8,7 +8,6 @@ const HELP_OPTIONS: { value: string; label: string }[] = [
   { value: "petition", label: "Sign the petition to recall Mayor Paige Smith" },
   { value: "gather", label: "Help gather signatures" },
   { value: "host", label: "Host a table or spread the word" },
-  { value: "donate", label: "Chip in to help cover costs" },
   { value: "updates", label: "Just keep me posted" },
 ];
 
