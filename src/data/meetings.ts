@@ -37,8 +37,6 @@ export interface RawMeeting {
 const ev = (id: number) => `https://paoniaco.portal.civicclerk.com/event/${id}/files`;
 
 export const RAW_MEETINGS: RawMeeting[] = [
-  { eventId: 566, start: "2026-04-14T17:00:00-06:00", title: "04/14/2026 Town Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(566) },
-  { eventId: 498, start: "2026-04-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(498) },
   { eventId: 567, start: "2026-04-21T17:00:00-06:00", title: "One Time Event", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(567) },
   { eventId: 537, start: "2026-04-21T17:15:00-06:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(537) },
   { eventId: 565, start: "2026-04-24T18:00:00-06:00", title: "4/24/2026 Zoning Board of Adjustments", kind: "other", body: "Zoning Board of Adjustments", bodyKey: "zoning", eventUrl: ev(565) },
@@ -60,11 +58,13 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 575, start: "2026-06-16T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(575) },
   { eventId: 593, start: "2026-06-16T18:30:00-06:00", title: "Special Town Board Meeting", kind: "special", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(593) },
   { eventId: 592, start: "2026-06-16T18:45:00-06:00", title: "Board Water Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(592) },
+  { eventId: 594, start: "2026-06-18T13:00:00-06:00", title: "6/18/2026 Trustee's Town Facilities Tour", kind: "other", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(594) },
   { eventId: 513, start: "2026-06-23T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(513) },
   { eventId: 527, start: "2026-07-06T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(527) },
   { eventId: 585, start: "2026-07-07T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(585) },
   { eventId: 584, start: "2026-07-07T18:30:00-06:00", title: "Town Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(584) },
   { eventId: 501, start: "2026-07-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(501) },
+  { eventId: 595, start: "2026-07-21T18:30:00-06:00", title: "7/21/2026", kind: "other", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(595) },
   { eventId: 514, start: "2026-07-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(514) },
   { eventId: 528, start: "2026-08-03T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(528) },
   { eventId: 576, start: "2026-08-04T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(576) },
