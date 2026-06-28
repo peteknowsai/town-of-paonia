@@ -72,9 +72,11 @@ export const position: Position = {
   place: "Paonia, Colorado",
 
   intro:
-    "Paonia is looking for a Town Administrator. This page is the job, told honestly. " +
-    "It is the part of a search that a firm would charge a town tens of thousands of dollars to produce, " +
-    "and it is free, public, and written by people who actually live here.",
+    "Paonia is looking for a Town Administrator. An interim administrator, Greg Sund, is steering the town " +
+    "for about six months while the Board lines up the permanent hire, and the Town has put out a request " +
+    "for proposals to bring in an executive search firm to run that search. This page is the part of a search " +
+    "a firm would charge a town tens of thousands of dollars to produce, told honestly, and it is free, " +
+    "public, and written by people who actually live here.",
 
   sections: [
     {
@@ -102,9 +104,9 @@ export const position: Position = {
   ],
 
   challenges: [
-    "The town is between administrators. This is an open, real search, not a formality.",
+    "The town is between permanent administrators, with an interim steering things for now. The permanent search is real, not a formality, and the hire matters.",
     "Trust between residents and town hall needs rebuilding after a turbulent stretch. The right person treats that as the job, not an annoyance.",
-    "In spring 2026 the Board voted to disable and then remove the Verkada surveillance cameras the town had installed in public spaces months earlier, after sustained public pressure about filming residents and children. We want an administrator who understands why a town would not want that, not one who has to have it explained.",
+    "In spring 2026 the Board voted to disable and then remove the Verkada surveillance cameras the town had installed in public spaces months earlier, after sustained public pressure about filming residents and children. The next administrator inherits the work of rebuilding trust around how the town handles technology and resident privacy.",
     "It is a lean organization. The administrator does real work with a small staff and a small budget, in a place where water, agriculture, and a tourism economy all have to be balanced honestly.",
   ],
 
