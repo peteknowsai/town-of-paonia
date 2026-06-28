@@ -9,7 +9,7 @@
 // Master switch for the public Town Administrator search. While false, the
 // /administrator page returns 404, its API routes reject writes, and no link to
 // it renders anywhere on the site. Flip to true to republish everything at once.
-export const SEARCH_PUBLISHED = false;
+export const SEARCH_PUBLISHED = true;
 
 export type SearchStatus = "open" | "paused" | "filled";
 
