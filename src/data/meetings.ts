@@ -61,6 +61,7 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 1632, start: "2026-08-04T09:30:00-06:00", title: "Board Tour of the Springs", kind: "other", body: "Public Meeting", bodyKey: "other", eventUrl: ev(1632) },
   { eventId: 576, start: "2026-08-04T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(576) },
   { eventId: 1605, start: "2026-08-04T18:30:00-06:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1605) },
+  { eventId: 1633, start: "2026-08-05T18:00:00-06:00", title: "08/05/2026 Special Town Board Meeting", kind: "special", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1633) },
   { eventId: 1631, start: "2026-08-11T18:30:00-06:00", title: "08/11/2026 Regular Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1631) },
   { eventId: 1600, start: "2026-08-18T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(1600) },
   { eventId: 1618, start: "2026-08-18T18:30:00-06:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1618) },
@@ -104,4 +105,5 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 507, start: "2027-01-12T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(507) },
   { eventId: 546, start: "2027-01-19T17:15:00-07:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(546) },
   { eventId: 1623, start: "2027-01-19T18:30:00-07:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1623) },
+  { eventId: 520, start: "2027-01-26T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(520) },
 ];
