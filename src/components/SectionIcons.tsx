@@ -24,6 +24,14 @@ export const ICONS: Record<SectionIcon, ReactNode> = {
       <path d="M12 3s-6.5 7.2-6.5 11a6.5 6.5 0 0 0 13 0C18.5 10.2 12 3 12 3Z" />
     </svg>
   ),
+  budget: (
+    <svg viewBox="0 0 24 24">
+      <line x1="3" y1="21" x2="21" y2="21" />
+      <rect x="5" y="12" width="3.5" height="9" />
+      <rect x="10.25" y="7" width="3.5" height="14" />
+      <rect x="15.5" y="10" width="3.5" height="11" />
+    </svg>
+  ),
   grants: (
     <svg viewBox="0 0 24 24">
       <rect x="2.5" y="6" width="19" height="12" rx="1.5" />
