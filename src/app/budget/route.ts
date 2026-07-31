@@ -1,13 +1,26 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-
 // The budget narrative is a self-contained editorial page with its own styles
-// and charts, so it bypasses the site layout. force-static bakes it at build
-// time into a plain static response; fs only runs on the build machine.
-export const dynamic = "force-static";
-
-export function GET() {
-  const html = readFileSync(join(process.cwd(), "content", "budget.html"), "utf8");
+// and charts, so it bypasses the site layout. On Cloudflare the worker serves
+// it through the ASSETS binding (public/ files); during next dev and the
+// build, node fs reads it directly.
+export async function GET(request: Request) {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const { env } = getCloudflareContext() as {
+      env?: { ASSETS?: { fetch: (input: URL | Request) => Promise<Response> } };
+    };
+    if (env?.ASSETS) {
+      const res = await env.ASSETS.fetch(new URL("/budget-content.html", request.url));
+      return new Response(res.body, {
+        status: res.status,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+  } catch {
+    // not running on the Cloudflare adapter; fall through to fs
+  }
+  const { readFileSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  const html = readFileSync(join(process.cwd(), "public", "budget-content.html"), "utf8");
   return new Response(html, {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
