@@ -14,7 +14,8 @@ export type SectionIcon =
   | "records"
   | "recall"
   | "job"
-  | "housing";
+  | "housing"
+  | "budget";
 
 export type Section = {
   href: string;
@@ -55,6 +56,12 @@ export const SECTIONS: Section[] = [
     name: "Water",
     icon: "water",
     desc: "Where the town's water projects and money stand.",
+  },
+  {
+    href: "/budget",
+    name: "Budget",
+    icon: "budget",
+    desc: "The story of the town's money, from the audit to your water bill.",
   },
   {
     href: "/grants",
