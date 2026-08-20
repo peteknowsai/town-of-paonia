@@ -96,4 +96,5 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 1623, start: "2027-01-19T18:30:00-07:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1623) },
   { eventId: 520, start: "2027-01-26T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(520) },
   { eventId: 1611, start: "2027-02-02T18:30:00-07:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1611) },
+  { eventId: 1624, start: "2027-02-16T18:30:00-07:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1624) },
 ];
