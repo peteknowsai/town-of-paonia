@@ -61,7 +61,6 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 1619, start: "2026-09-15T18:30:00-06:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1619) },
   { eventId: 516, start: "2026-09-22T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(516) },
   { eventId: 530, start: "2026-10-05T18:00:00-06:00", title: "Planning Commission", kind: "other", body: "Planning Commission", bodyKey: "planning", eventUrl: ev(530) },
-  { eventId: 578, start: "2026-10-06T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(578) },
   { eventId: 588, start: "2026-10-06T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(588) },
   { eventId: 1607, start: "2026-10-06T18:30:00-06:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1607) },
   { eventId: 504, start: "2026-10-13T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(504) },
