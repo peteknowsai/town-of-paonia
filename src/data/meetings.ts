@@ -37,7 +37,6 @@ export interface RawMeeting {
 const ev = (id: number) => `https://paoniaco.portal.civicclerk.com/event/${id}/files`;
 
 export const RAW_MEETINGS: RawMeeting[] = [
-  { eventId: 501, start: "2026-07-14T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(501) },
   { eventId: 597, start: "2026-07-21T17:00:00-06:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(597) },
   { eventId: 595, start: "2026-07-21T18:30:00-06:00", title: "Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(595) },
   { eventId: 514, start: "2026-07-28T18:30:00-06:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(514) },
