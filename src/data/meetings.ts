@@ -71,6 +71,7 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 1658, start: "2026-11-24T17:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1658) },
   { eventId: 1645, start: "2026-11-25T17:30:00-07:00", title: "Town Board Budget Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1645) },
   { eventId: 1646, start: "2026-12-08T17:30:00-07:00", title: "12/08/2026 Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1646) },
+  { eventId: 1672, start: "2026-12-31T18:00:00-07:00", title: "One Time Event", kind: "other", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1672) },
   { eventId: 1660, start: "2027-01-26T17:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1660) },
   { eventId: 1648, start: "2027-02-09T17:30:00-07:00", title: "12/08/2026 Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1648) },
   { eventId: 1661, start: "2027-02-23T17:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1661) },
