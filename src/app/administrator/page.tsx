@@ -53,6 +53,10 @@ export default function AdministratorPage() {
       <p className="prose" style={{ fontSize: "1.18rem", lineHeight: 1.6 }}>
         {p.intro}
       </p>
+      <p className="prose" style={{ color: "var(--muted)", fontSize: "0.98rem" }}>
+        See <Link href="/rfp/executive-search">the executive-search RFP the Town has out</Link> for
+        what that firm would cost and do.
+      </p>
 
       {/* Disclosure band: the creepy-AI pre-empt, the conflict, and who decides. */}
       <aside className="note" style={{ marginTop: "1.8rem" }}>
@@ -104,22 +108,27 @@ export default function AdministratorPage() {
         ))}
       </div>
 
-      {/* The citizens' committee. */}
-      <h2 className="section-head">Who judges: a committee of residents</h2>
+      {/* The citizens' committee: an open invitation, not a roster. Every seat
+          below is vacant by design; the disclaimer leads so no one mistakes
+          these for people who have already signed up. */}
+      <h2 className="section-head">Who judges: an open committee of residents</h2>
       <p className="prose" style={{ marginTop: 0 }}>{p.committee.lead}</p>
+      <p className="prose">
+        <strong>Every seat below is empty.</strong> These are the roles we hope to fill, a
+        cross-section of the town, not people who have signed up. The committee is open: any
+        Paonia resident can take a seat. <a href="#join">Take one below.</a>
+      </p>
       <div className="spread spread-tight">
         {p.committee.members.map((m) => (
           <div className="card card-quiet" key={m.role}>
-            <h3>{m.role}</h3>
-            <p>{m.blurb}</p>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "0.6rem" }}>
+              <h3 style={{ margin: 0 }}>{m.role}</h3>
+              <span className="tag tag-declined">Seat open</span>
+            </div>
+            <p style={{ marginTop: "0.35rem" }}>{m.blurb}</p>
           </div>
         ))}
       </div>
-      <p className="prose">
-        <em>These are the kinds of neighbors we are looking for, not real names yet. The
-        committee is open. Anyone in town can join.</em>{" "}
-        <a href="#join">Sign up below.</a>
-      </p>
 
       {/* The free-vs-firm ledger. */}
       <h2 className="section-head">Behind closed doors, or in the open</h2>
