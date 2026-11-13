@@ -60,7 +60,7 @@ export const RAW_MEETINGS: RawMeeting[] = [
   { eventId: 1608, start: "2026-11-03T18:30:00-07:00", title: "Standing Board Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1608) },
   { eventId: 1641, start: "2026-11-04T17:30:00-07:00", title: "Town Board Budget Work Session", kind: "work-session", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(1641) },
   { eventId: 505, start: "2026-11-10T18:30:00-07:00", title: "Regular Town Board Meeting", kind: "regular", body: "Board of Trustees", bodyKey: "board", eventUrl: ev(505) },
-  { eventId: 1673, start: "2026-11-16T17:30:00-07:00", title: "One Time Event", kind: "other", body: "Public Meeting", bodyKey: "other", eventUrl: ev(1673) },
+  { eventId: 1673, start: "2026-11-16T17:30:00-07:00", title: "11/16/2026 Work Session with Sustainable Solutions LLC", kind: "work-session", body: "Public Meeting", bodyKey: "other", eventUrl: ev(1673) },
   { eventId: 1603, start: "2026-11-17T17:00:00-07:00", title: "Ad Hoc Short-Term Rental Committee", kind: "other", body: "Ad Hoc Committee", bodyKey: "adhoc", eventUrl: ev(1603) },
   { eventId: 544, start: "2026-11-17T17:15:00-07:00", title: "Tree Board", kind: "other", body: "Tree Board", bodyKey: "tree", eventUrl: ev(544) },
   { eventId: 1674, start: "2026-11-17T18:30:00-07:00", title: "11/17/2026 Special Board Meeting", kind: "special", body: "Public Meeting", bodyKey: "other", eventUrl: ev(1674) },
